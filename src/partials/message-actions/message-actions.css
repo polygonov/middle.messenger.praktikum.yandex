@@ -1,0 +1,25 @@
+.message-actions {
+    position: absolute;
+    margin-left: 10px;
+    top: calc(100% - 193px);
+    width: 162px;
+    height: 98px;
+    background: #1B2121;
+    border-radius: 12px;
+    font-size: 12px;  
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.message-actions-item { 
+    margin-left: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.message-actions-icon {
+    margin-right: 14px;
+}
