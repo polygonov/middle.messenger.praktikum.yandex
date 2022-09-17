@@ -4,7 +4,8 @@
   "description": "",
   "scripts": {
     "dev": "parcel ./src/pages/*.hbs --no-cache",
-    "build": "parcel build ./src/pages/*.hbs"
+    "build": "parcel build ./src/pages/*.hbs",
+    "start": "npm run build && node ./server.js"
   },
   "keywords": [],
   "author": "",
