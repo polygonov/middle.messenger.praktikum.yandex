@@ -1,0 +1,13 @@
+@import './left-message.css';
+@import './right-message.css';
+
+.message-hold {
+    width: 100%;
+    overflow: auto;
+}
+
+.message-area {
+    padding-left: 60px;
+    padding-right: 60px;
+    padding-bottom: 10px;
+}

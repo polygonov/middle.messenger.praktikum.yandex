@@ -1,0 +1,25 @@
+.chat-actions {
+    position: absolute;
+    margin-top: 10px;
+    width: 210px;
+    height: 98px;
+    background: #1B2121;
+    border-radius: 12px;
+    right: 10px;
+    font-size: 12px;  
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.chat-actions-item { 
+    margin-left: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.chat-actions-icon {
+    margin-right: 14px;
+}

@@ -1,0 +1,24 @@
+.import {
+    margin-right: 10px;
+    margin-left: 21px;
+}
+
+.message-input {
+    background-color: #495057;
+    width: 100%;
+    height: 32px;
+    border-radius: 30px;
+    align-items: center;
+    display: flex;
+}
+
+.message-input-text {
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 14px;
+}
+
+.message-send {
+    margin-right: 20px;
+    margin-left: 10px;
+}
