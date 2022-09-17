@@ -1,4 +1,5 @@
 .chat-actions {
+
     position: absolute;
     margin-top: 10px;
     width: 210px;
@@ -10,16 +11,17 @@
     display: flex;
     flex-flow: column;
     justify-content: space-between;
+    padding: 0px;
     padding-top: 15px;
     padding-bottom: 15px;
-}
 
-.chat-actions-item { 
-    margin-left: 15px;
-    display: flex;
-    align-items: center;
-}
+    .item { 
+        margin-left: 15px;
+        display: flex;
+        align-items: center;
+    }
 
-.chat-actions-icon {
-    margin-right: 14px;
+    .icon {
+        margin-right: 14px;
+    }
 }
