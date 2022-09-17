@@ -37,6 +37,7 @@
             
             .tip {
                 font-size: 9px;
+                margin-bottom: 7px;
             }
             
             .inner {
@@ -44,6 +45,31 @@
                 background: #222226;
                 border-bottom: 1px solid #4193FB;
                 box-shadow: none;
+                padding-bottom: 7px;
+                font-size: 14px;
+                margin-bottom: 16px;
+            }
+        }
+
+        .footer {
+            
+            display: flex;
+            align-items: center;
+            flex-flow: column;
+            padding-bottom: 30px;
+
+            .btn {
+                background: #4193FB;
+                border-radius: 8px;
+                border: none;
+                width: 280px;
+                height: 37px;
+                margin-bottom: 14px;
+            }
+
+            .ask {
+                font-size: 11px;
+                color: #4193FB;
             }
         }
     }
