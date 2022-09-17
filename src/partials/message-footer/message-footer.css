@@ -10,12 +10,12 @@
     border-radius: 30px;
     align-items: center;
     display: flex;
-}
 
-.message-input-text {
-    margin-left: 20px;
-    margin-right: 20px;
-    font-size: 14px;
+    .text {
+        margin-left: 20px;
+        margin-right: 20px;
+        font-size: 14px;
+    }
 }
 
 .message-send {

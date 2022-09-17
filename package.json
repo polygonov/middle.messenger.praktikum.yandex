@@ -19,5 +19,8 @@
   },
   "dependencies": {
     "express": "^4.18.1"
+  },
+  "engines": {
+    "node": ">=16.0.0"
   }
 }

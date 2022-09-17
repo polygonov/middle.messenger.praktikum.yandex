@@ -7,10 +7,10 @@
     padding: 12px;
     font-size: 14px;
     float: left;
-}
 
-.left-message-status {  
-    float: right;
-    font-size: 9px;
-    color: #E5E5E5;
+    .status {  
+        float: right;
+        font-size: 9px;
+        color: #E5E5E5;
+    }
 }
