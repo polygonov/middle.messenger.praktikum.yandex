@@ -73,19 +73,5 @@
             justify-content: center;
         }
     }
-    
-    /* todo - remove <a> block, its only for demo on 1st sprint */
-    a {
-        outline: none;
-        text-decoration: none;
-        margin: 0;
-    }
-    
-    a:link {
-        color: #E5E5E5;
-    }
-    
-    a:visited {
-        color: #E5E5E5;
-    }
+
 }

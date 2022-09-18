@@ -2,6 +2,7 @@
 @import '../pages/index.css';
 @import '../pages/login.css';
 @import '../pages/profile.css';
+@import '../pages/pageError.css';
 @import '../partials/chats-head/chats-head.css';
 @import '../partials/chats/chats.css';
 @import '../partials/messages/messages.css';
