@@ -40,28 +40,29 @@
             
             .inputs {
                 width: 280px;
-            }
-            
-            .tip {
-                font-size: 9px;
-                margin-bottom: 5px;
+
+                .tip {
+                    font-size: 9px;
+                    margin-bottom: 5px;
+                }
+    
+                .error {
+                    font-size: 9px;
+                    margin-bottom: 5px;
+                    color: #FF2F2F;
+                }
+                
+                .inner {
+                    width: 100%;
+                    background: #222226;
+                    border-bottom: 1px solid #4193FB;
+                    box-shadow: none;
+                    padding-bottom: 5px;
+                    font-size: 14px;
+                    margin-bottom: 5px;
+                }
             }
 
-            .error {
-                font-size: 9px;
-                margin-bottom: 5px;
-                color: #FF2F2F;
-            }
-            
-            .inner {
-                width: 100%;
-                background: #222226;
-                border-bottom: 1px solid #4193FB;
-                box-shadow: none;
-                padding-bottom: 5px;
-                font-size: 14px;
-                margin-bottom: 5px;
-            }
         }
 
         .footer {
