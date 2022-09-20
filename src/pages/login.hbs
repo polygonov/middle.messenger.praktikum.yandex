@@ -1,16 +1,35 @@
 {{!< main}}
 
 <div class="login-page">
-    <div class="form log">
+    <form class="form log">
         <div class="head">
             <div class="name">Вход</div>
             <div class="inputs">
                 <div class="tip">Логин</div>
-                <div class="inner">ivanivanov</div>
+                <input 
+                    class="inner"
+                    type="text"
+                    name="login"
+                    minlength="3"
+                    maxlength="20"
+                    pattern="(?=.*[A-Za-z])[-_A-Za-z0-9]{3,20}"
+                    placeholder=" "
+                    required
+                />
                 <div class="error">Неверный логин</div>
+                
                 <div class="tip">Пароль</div>
-                <div class="inner">••••••••••••</div>
-                <div class="error"></div>
+                <input 
+                    class="inner"
+                    type="password"
+                    name="password"
+                    minlength="8"
+                    maxlength="40"
+                    pattern="(?=.*[A-Z])(?=.*[0-9])[-_A-Za-z0-9]{3,20}"
+                    placeholder=" "
+                    required
+                />
+                <div class="error">Парот введен неправильно</div>
             </div>
         </div>
         <div class="footer">
@@ -21,5 +40,5 @@
                 <div class="ask">Нет аккаунта?</div>
             </a>
         </div>
-    </div>
+    </form>
 </div>
