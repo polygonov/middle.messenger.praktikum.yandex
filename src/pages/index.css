@@ -13,7 +13,7 @@
             width: 100%;
             height: 78px;
         }
-        
+
         .chat-list {
             flex-flow: column;
             height: calc(100% - 99px);
@@ -45,7 +45,7 @@
             overflow-y: auto;
             background-color: #17191F;
         }
-        
+
         .messages-head {
             width: 100%;
             height: 55px;
@@ -54,7 +54,7 @@
             flex-direction: row;
             justify-content: space-between;
         }
-        
+
         .messages-footer {
             width: 100%;
             height: 55px;

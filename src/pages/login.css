@@ -43,6 +43,7 @@
 
                 .tip {
                     font-size: 9px;
+                    margin-top: 10px;
                     margin-bottom: 5px;
                 }
     
@@ -50,16 +51,26 @@
                     font-size: 9px;
                     margin-bottom: 5px;
                     color: #FF2F2F;
+                    display: none;
                 }
                 
                 .inner {
+                    padding: 0px;
+                    outline: none;
+                    display: block;
                     width: 100%;
-                    background: #222226;
-                    border-bottom: 1px solid #4193FB;
-                    box-shadow: none;
-                    padding-bottom: 5px;
+                    border: 0px;
                     font-size: 14px;
+                    padding-bottom: 5px;
+                    box-sizing: border-box;
+                    background: #222226;
+                    color: #E5E5E5;
+                    border-bottom: 1px solid #4193FB;
                     margin-bottom: 5px;
+                }
+
+                input:invalid:not(:placeholder-shown) + .error {
+                    display: block;
                 }
             }
 
