@@ -1,0 +1,29 @@
+{{!< main}}
+
+<div class="separate">
+
+    <div class="chat-sector">
+        <div class="chat-head">
+            {{> "chats-head/chats-head"}}
+        </div>
+        <div class="chat-list">
+            {{> "chats/chats"}}
+        </div>
+    </div>
+    <div class="message-sector">
+        <div class="messages-head">
+            {{> "messages-head/messages-head"}}
+        </div>
+        <div class="message-divider"></div>
+        {{> "chat-actions/chat-actions"}}
+        <div class="message-list">
+            {{> "messages/messages"}}
+        </div>
+        {{> "message-actions/message-actions"}}
+        <div class="message-divider"></div>
+        <div class="messages-footer">
+            {{> "message-footer/message-footer"}}
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,16 @@
+.left-message {
+    max-width: 70%;
+    color: #E5E5E5;
+    background-color: #222226;
+    margin-top: 10px;
+    border-radius: 0 12px 12px 12px;
+    padding: 12px;
+    font-size: 14px;
+    float: left;
+
+    .status {  
+        float: right;
+        font-size: 9px;
+        color: #E5E5E5;
+    }
+}

@@ -1,0 +1,12 @@
+@import '../layouts/main.css';
+@import '../pages/index.css';
+@import '../pages/login.css';
+@import '../pages/profile.css';
+@import '../pages/pageError.css';
+@import '../partials/chats-head/chats-head.css';
+@import '../partials/chats/chats.css';
+@import '../partials/messages/messages.css';
+@import '../partials/messages-head/messages-head.css';
+@import '../partials/chat-actions/chat-actions.css';
+@import '../partials/message-actions/message-actions.css';
+@import '../partials/message-footer/message-footer.css';
