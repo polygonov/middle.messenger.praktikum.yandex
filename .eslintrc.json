@@ -1,0 +1,12 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["@typescript-eslint"],
+    "rules": {
+      "max-len": [2, 100],
+      "@typescript-eslint/no-unused-vars": 2
+      }
+  } 
