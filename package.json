@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "parcel ./src/pages/*.hbs --no-cache",
+    "dev": "parcel ./src/index.html --no-cache",
     "build": "parcel build ./src/pages/*.hbs",
     "start": "npm run build && node ./server.ts",
     "eslint": "node_modules/.bin/eslint ."
@@ -13,6 +13,7 @@
   "license": "ISC",
   "devDependencies": {
     "@anikin/parcel-transformer-handlebars": "^1.0.9",
+    "@anikin/parcel-transformer-handlebars-precompile": "^1.0.1",
     "@typescript-eslint/eslint-plugin": "^5.42.1",
     "@typescript-eslint/parser": "^5.42.1",
     "eslint": "^8.27.0",
@@ -20,6 +21,7 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-n": "^15.5.1",
     "eslint-plugin-promise": "^6.1.1",
+    "handlebars": "^4.7.7",
     "parcel": "^2.7.0",
     "postcss": "^8.4.16",
     "postcss-import": "^15.0.0",

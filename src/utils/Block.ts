@@ -1,22 +1,24 @@
-import { EventBus } from "./EventBus";
+import { EventBus } from './EventBus';
+
 
 export class Block {
     static EVENTS = {
-        INIT: "init",
-        FLOW_CDM: "flow:component-did-mount",
-        FLOW_CDU: "flow:component-did-update",
-        FLOW_RENDER: "flow:render"
+        INIT: 'init',
+        FLOW_CDM: 'flow:component-did-mount',
+        FLOW_CDU: 'flow:component-did-update',
+        FLOW_RENDER: 'flow:render'
     };
 
     private _element: HTMLElement | null = null;
     private _meta: { tagName: string; props: unknown; } | null = null;
     private _eventBus: () => EventBus;
-    private _props: unknown;
+    private _eventsLinks: Record<string, () => void>;
+    protected props: any;
 
-    constructor(tagName: string = "div", props: unknown = {}) {
+    constructor(tagName: string = 'div', props: unknown = {}) {
         const eventBus = new EventBus();
         this._meta = { tagName, props };
-        this._props = this._makePropsProxy(props);
+        this.props = this._makePropsProxy(props);
         this._eventBus = () => eventBus;
         this._registerEvents(eventBus);
         eventBus.emit(Block.EVENTS.INIT);
@@ -45,7 +47,7 @@ export class Block {
         this._eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
 
-    componentDidMount() { }
+    protected componentDidMount() { }
 
     dispatchComponentDidMoun() {
         this._eventBus().emit(Block.EVENTS.FLOW_CDM);
@@ -68,7 +70,7 @@ export class Block {
         if (!nextProps) {
             return;
         }
-        Object.assign(this._props as {}, nextProps);
+        Object.assign(this.props as {}, nextProps);
     };
 
     get element() {
@@ -76,26 +78,31 @@ export class Block {
     }
 
     private _render() {
-        if (!this._element) { return; }
-        const block = this.render();
-        this._element.innerHTML = block;
+        const fragment = this.render();
+        const newElement = fragment.firstElementChild as HTMLElement;
+        if( this._element) {
+            this._removeEvents();
+            this._element.replaceWith(newElement);
+        }
+        this._element = newElement;
+        this._addEvents();
     }
 
-    render(): string {
-        return '';
+    protected render(): DocumentFragment {
+        return new DocumentFragment;
     }
 
     getContent() {
         return this.element;
     }
 
-    private _makePropsProxy(props) {
+    private _makePropsProxy(props: unknown): unknown {
         const self = this;
 
-        return new Proxy(props, {
+        return new Proxy(props as {}, {
             get(target: Record<string, unknown>, prop: string) {
                 const value = target[prop];
-                return typeof value === "function" ? value.bind(target) : value;
+                return typeof value === 'function' ? value.bind(target) : value;
             },
             set(target: Record<string, unknown>, prop: string, value: unknown) {
                 target[prop] = value;
@@ -108,19 +115,43 @@ export class Block {
         });
     }
 
-    private _createDocumentElement(tagName) {
+    private _removeEvents() {
+        const events: Record<string, () => void> = this._eventsLinks;
+        if (!events) { return; }
+        Object.entries(events).forEach(([event, listener]) => {
+            this._element!.removeEventListener(event, listener);
+        })
+    }
+
+    private _addEvents() {
+        const events: Record<string, () => void> = (this.props as any).events;
+        this._eventsLinks = events;
+        if (!events) { return; }
+        Object.entries(events).forEach(([event, listener]) => {
+            this._element!.addEventListener(event, listener);
+        })
+    }
+
+    private _createDocumentElement(tagName: string): HTMLElement  {
         return document.createElement(tagName);
     }
 
     show() {
         const content = this.getContent();
         if (!content) { return; }
-        content.style.display = "block";
+        content.style.display = 'block';
     }
 
-    hide() {        
+    hide() {
         const content = this.getContent();
         if (!content) { return; }
-        content.style.display = "none";
+        content.style.display = 'none';
+    }
+
+    compile(template: (context: any) => string, context: any) {
+        const fragment = this._createDocumentElement('template') as HTMLTemplateElement; 
+        const htmlString = template(context);
+        fragment.innerHTML = htmlString;
+        return fragment.content;
     }
 }
