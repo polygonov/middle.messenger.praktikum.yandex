@@ -1,5 +1,5 @@
+import { nanoid } from 'nanoid';
 import { EventBus } from './EventBus';
-
 
 export class Block {
     static EVENTS = {
@@ -9,16 +9,19 @@ export class Block {
         FLOW_RENDER: 'flow:render'
     };
 
+    id = nanoid(6);
     private _element: HTMLElement | null = null;
-    private _meta: { tagName: string; props: unknown; } | null = null;
     private _eventBus: () => EventBus;
     private _eventsLinks: Record<string, () => void>;
     protected props: any;
+    protected children: Record<string, Block>;
 
-    constructor(tagName: string = 'div', props: unknown = {}) {
+    constructor(propsAndChildren: unknown = {}) {
+        const { props, children } = this.getChildren(propsAndChildren);
+        this.children = children;
         const eventBus = new EventBus();
-        this._meta = { tagName, props };
         this.props = this._makePropsProxy(props);
+        this.initChildren();
         this._eventBus = () => eventBus;
         this._registerEvents(eventBus);
         eventBus.emit(Block.EVENTS.INIT);
@@ -31,15 +34,25 @@ export class Block {
         eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
     }
 
-    private _createResources() {
-        if (!this._meta) { return }
-        const { tagName } = this._meta;
-        this._element = this._createDocumentElement(tagName);
+    init() {
+        this._eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
 
-    init() {
-        this._createResources();
-        this._eventBus().emit(Block.EVENTS.FLOW_RENDER);
+    getChildren(propsAndChildren: any) {
+        const children: Record<string, Block> = {};
+        const props: any = {};
+        Object.entries(propsAndChildren).map(([key, value]) => {
+            if (value instanceof Block) {
+                children[key] = value;
+            } else {
+                props[key] = value;
+            }
+        });
+        return { props, children };
+    }
+
+    protected initChildren() {
+
     }
 
     private _componentDidMount() {
@@ -80,7 +93,7 @@ export class Block {
     private _render() {
         const fragment = this.render();
         const newElement = fragment.firstElementChild as HTMLElement;
-        if( this._element) {
+        if (this._element) {
             this._removeEvents();
             this._element.replaceWith(newElement);
         }
@@ -105,8 +118,9 @@ export class Block {
                 return typeof value === 'function' ? value.bind(target) : value;
             },
             set(target: Record<string, unknown>, prop: string, value: unknown) {
+                const oldProps = { ...target };
                 target[prop] = value;
-                self._eventBus().emit(Block.EVENTS.FLOW_CDU, { ...target }, target);
+                self._eventBus().emit(Block.EVENTS.FLOW_CDU, oldProps, target);
                 return true;
             },
             deleteProperty() {
@@ -132,7 +146,7 @@ export class Block {
         })
     }
 
-    private _createDocumentElement(tagName: string): HTMLElement  {
+    private _createDocumentElement(tagName: string): HTMLElement {
         return document.createElement(tagName);
     }
 
@@ -149,9 +163,19 @@ export class Block {
     }
 
     compile(template: (context: any) => string, context: any) {
-        const fragment = this._createDocumentElement('template') as HTMLTemplateElement; 
+        const fragment = this._createDocumentElement('template') as HTMLTemplateElement;
+        Object.entries(this.children).forEach(([key, child]) => {
+            context[key] = `<div data-id="id-${child.id}"></div>`
+        })
         const htmlString = template(context);
         fragment.innerHTML = htmlString;
+        Object.entries(this.children).forEach(([key, child]) => {
+            const stub = fragment.content.querySelector(`[data-id="id-${child.id}"]`);  key;
+            if (!stub) {
+                return;
+            }
+            stub.replaceWith(child.getContent()!);
+        });
         return fragment.content;
     }
 }
