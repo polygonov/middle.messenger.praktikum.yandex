@@ -4,29 +4,11 @@
             <div class="name">Вход</div>
             <div class="inputs">
                 <div class="tip">Логин</div>
-                <input 
-                    class="inner"
-                    type="text"
-                    name="login"
-                    minlength="3"
-                    maxlength="20"
-                    pattern="(?=.*[A-Za-z])[-_A-Za-z0-9]{3,20}"
-                    placeholder=" "
-                    required
-                />
+                {{{ inputLogin }}}
                 <div class="error">Неверный логин</div>
-                
+
                 <div class="tip">Пароль</div>
-                <input 
-                    class="inner"
-                    type="password"
-                    name="password"
-                    minlength="8"
-                    maxlength="40"
-                    pattern="(?=.*[A-Z])(?=.*[0-9])[-_A-Za-z0-9]{3,20}"
-                    placeholder=" "
-                    required
-                />
+                {{{ inputPassword }}}
                 <div class="error">Парот введен неправильно</div>
             </div>
         </div>
