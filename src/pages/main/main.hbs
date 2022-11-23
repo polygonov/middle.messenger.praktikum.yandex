@@ -5,15 +5,25 @@
             {{{ chatsHead }}}
         </div>
         <div class="chat-list">
-            <a href="index-selected.hbs">
-                {{{ chats }}}
-            </a>
+            {{{ chats }}}
         </div>
     </div>
     <div class="message-sector">
+        {{#if showChats}}
+            {{{ messagesHead }}}
+            <div class="message-divider"></div>
+            {{{ chatActions }}}
+            {{{ messages }}}
+            {{{ messageAction }}}
+            <div class="message-divider"></div>
+            {{{ messageFooter }}}
+        {{else}}
         <div class="not-selected">
             <div>Выберите чат, чтобы отправить сообщение</div>
         </div>
+        {{/if}}
+
+
     </div>
 
 </div>
