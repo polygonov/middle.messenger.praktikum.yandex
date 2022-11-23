@@ -1,5 +1,7 @@
 import { Block } from '../../utils/Block';
 import template from './chats-head.hbs';
+import arrowRight from '../../../static/arrow-right.svg';
+import search from '../../../static/search.svg';
 
 type ChatsHeadProps = {
     events?: {
@@ -21,6 +23,6 @@ export class ChatsHeadComponent extends Block {
     }
 
     protected render(): DocumentFragment {
-        return this.compile(template, {});
+        return this.compile(template, { arrowRight, search });
     }
 }

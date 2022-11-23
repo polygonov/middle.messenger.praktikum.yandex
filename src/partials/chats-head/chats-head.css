@@ -15,10 +15,6 @@
         margin-left: 4px;
     }
 
-    #search {
-        content: url("../../static/search.svg");
-    }
-
     .label {
         color: #E5E5E5;
         font-size: 12px;
@@ -47,10 +43,6 @@
     .icon {
         height: 10px;
         margin-left: 8px;
-    }
-
-    #arrow-right {
-        content: url("../../static/arrow-right.svg");
     }
 
 }
