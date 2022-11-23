@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "parcel ./src/pages/*.hbs --no-cache",
-    "build": "parcel build ./src/pages/*.hbs",
+    "dev": "parcel ./src/index.html --no-cache",
+    "build": "parcel build ./src/index.html",
     "start": "npm run build && node ./server.ts",
     "eslint": "node_modules/.bin/eslint ."
   },
@@ -25,15 +25,14 @@
     "parcel": "^2.7.0",
     "postcss": "^8.4.16",
     "postcss-import": "^15.0.0",
+    "postcss-modules": "^4.3.1",
     "postcss-nested": "^5.0.6",
     "ts-node": "^10.9.1",
     "tslib": "^2.4.1",
     "typescript": "^4.9.3"
   },
   "dependencies": {
-    "express": "^4.18.1"
-  },
-  "engines": {
-    "node": ">=16.0.0"
+    "express": "^4.18.1",
+    "nanoid": "^4.0.0"
   }
 }

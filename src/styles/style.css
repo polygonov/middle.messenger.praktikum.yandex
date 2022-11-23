@@ -1,6 +1,6 @@
 @import '../layouts/main.css';
-@import '../pages/index.css';
-@import '../pages/login.css';
+@import '../pages/login/login.css';
+@import '../pages/main/main.css';
 @import '../pages/profile.css';
 @import '../pages/pageError.css';
 @import '../partials/chats-head/chats-head.css';

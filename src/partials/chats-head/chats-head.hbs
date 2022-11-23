@@ -1,16 +1,16 @@
-<div class="profile">
-    <a href="profile.hbs">
+<div>
+    <div class="profile">
         <span class="label">Профиль</span>
-    </a>
         <img
+            src="{{ arrowRight }}"
             class="icon"
-            src="../../static/arrow-right.svg"
         >
+        </div>
+    <div class="chat-search">
+        <img
+            src="{{ search }}"
+            class="icon"
+        >
+        <div class="label" placeholder="Поиск" contenteditable="true"></div>
     </div>
-<div class="chat-search">
-    <img
-        class="icon"
-        src="../../static/search.svg"
-    >
-    <div class="label" placeholder="Поиск" contenteditable="true"></div>
 </div>
