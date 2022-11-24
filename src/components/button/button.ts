@@ -3,6 +3,7 @@ import template from './button.hbs';
 
 type ButtonProps = {
     label: string;
+    type: string;
     events?: {
         click?: () => void;
     }

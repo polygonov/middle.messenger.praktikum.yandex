@@ -1,34 +1,50 @@
 import Button from '../../components/button';
 import Input from '../../components/input';
 import { Block } from '../../utils/Block';
+import { ValideRules } from '../../utils/validateRules';
 import template from './login.hbs';
 
 export class LoginPage extends Block {
+    private _loginRule = new RegExp(ValideRules.login);
+    private _passwordRule = new RegExp(ValideRules.password);
+    
+    constructor() {
+        super();
+        this.addEvents();
+    }
+
+    protected addEvents() {
+        this.setProps({
+            events: {
+                submit: e => {
+                    e.preventDefault();
+                    const data = [...new FormData(e.target)];
+                    const entries = new Map(data);
+                    const result = Object.fromEntries(entries);
+                    const checkLogin = this._loginRule.test(data[0][1].toString());
+                    const checkPassword = this._passwordRule.test(data[1][1].toString());
+                    if (checkLogin && checkPassword) {
+                        console.log(result);
+                    }
+                }
+            }
+        });
+    }
 
     protected initChildren(): void {
         this.children.button = new Button({
             label: 'Авторизоваться',
-            events: {
-                click: () => console.log('clicked')
-            }
+            type: 'submit',
         });
         this.children.inputLogin = new Input({
-            minLength: 3,
-            maxLength: 20,
+            name: 'login',
             type: 'text',
-            pattern: '(?=.*[A-Za-z])[-_A-Za-z0-9]{3,20}',
-            events: {
-                click: () => console.log('clicked')
-            }
-        });        
+            pattern: ValideRules.login,
+        });
         this.children.inputPassword = new Input({
-            minLength: 8,
-            maxLength: 40,
+            name: 'password',
             type: 'password',
-            pattern: '(?=.*[A-Z])(?=.*[0-9])[-_A-Za-z0-9]{3,20}',
-            events: {
-                click: () => console.log('clicked')
-            }
+            pattern:  ValideRules.password,
         });
     }
 

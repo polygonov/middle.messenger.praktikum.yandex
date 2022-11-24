@@ -2,8 +2,7 @@ import { Block } from '../../utils/Block';
 import template from './input.hbs';
 
 type InputProps = {
-    minLength: number;
-    maxLength: number;
+    name: string;
     type: string;
     pattern: string;
     events?: {
