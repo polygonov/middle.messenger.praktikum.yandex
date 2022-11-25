@@ -3,10 +3,10 @@
 @import '../pages/main/main.css';
 @import '../pages/profile.css';
 @import '../pages/pageError.css';
-@import '../partials/chats-head/chats-head.css';
-@import '../partials/chats/chats.css';
-@import '../partials/messages/messages.css';
-@import '../partials/messages-head/messages-head.css';
-@import '../partials/chat-actions/chat-actions.css';
-@import '../partials/message-actions/message-actions.css';
-@import '../partials/message-footer/message-footer.css';
+@import '../components/chats-head/chats-head.css';
+@import '../components/chats/chats.css';
+@import '../components/messages/messages.css';
+@import '../components/messages-head/messages-head.css';
+@import '../components/chat-actions/chat-actions.css';
+@import '../components/message-actions/message-actions.css';
+@import '../components/message-footer/message-footer.css';

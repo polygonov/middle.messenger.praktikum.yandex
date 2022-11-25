@@ -1,0 +1,57 @@
+<div>
+    <div class="chat-preview">
+        <img class="avatar" src="{{ avatar1 }}">
+        <div class="info">
+            <div class="chat-name">
+                Алексей Навальный
+            </div>
+            <div class="last-message">
+                Меня перевели в ШИЗО. Похоже мой космической полет...
+            </div>
+        </div>
+        <div class="message-status">
+            <div class="message-time">10:49</div>
+            <div class="message-lenght">
+                <div class="lenght-value">4</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="chat-preview chat-preview-selected">
+        <img class="avatar" src="{{ avatar2 }}">
+        <div class="info">
+            <div class="chat-name">
+                Веган-кафе "Фрик"
+            </div>
+            <div class="last-message">
+                Развитие бизнеса через горизонтальные решения...
+            </div>
+        </div>
+        <div class="message-status">
+            <div class="message-time">10:49</div>
+            <div class="message-lenght">
+                <div class="lenght-value">10</div>
+            </div>
+        </div>
+    </div>
+
+    {{#each chatsList}}
+    <div class="chat-preview">
+        <img class="avatar" src="{{ ../avatar3 }}">
+        <div class="info">
+            <div class="chat-name">
+                Светлана Богачева
+            </div>
+            <div class="last-message">
+                Рекомендую почитать книгу о невероятном Билли Миллигане...
+            </div>
+        </div>
+        <div class="message-status">
+            <div class="message-time">10:49</div>
+            <div class="message-lenght hidden">
+                <div class="lenght-value">4</div>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</div>
