@@ -1,12 +1,12 @@
 import Button from '../../components/button';
 import Input from '../../components/input';
 import { Block } from '../../utils/Block';
-import { ValideRules } from '../../utils/validateRules';
+import { ValidateRules } from '../../utils/validateRules';
 import template from './login.hbs';
 
 export class LoginPage extends Block {
-    private _loginRule = new RegExp(ValideRules.login);
-    private _passwordRule = new RegExp(ValideRules.password);
+    private _loginRule = new RegExp(ValidateRules.login);
+    private _passwordRule = new RegExp(ValidateRules.password);
     
     constructor() {
         super();
@@ -39,12 +39,12 @@ export class LoginPage extends Block {
         this.children.inputLogin = new Input({
             name: 'login',
             type: 'text',
-            pattern: ValideRules.login,
+            pattern: ValidateRules.login,
         });
         this.children.inputPassword = new Input({
             name: 'password',
             type: 'password',
-            pattern:  ValideRules.password,
+            pattern:  ValidateRules.password,
         });
     }
 

@@ -1,15 +1,15 @@
 import Button from '../../components/button';
 import Input from '../../components/input';
 import { Block } from '../../utils/Block';
-import { ValideRules } from '../../utils/validateRules';
+import { ValidateRules } from '../../utils/validateRules';
 import template from './registration.hbs';
 
 export class RegistrationPage extends Block {
-    private _emailRule = new RegExp(ValideRules.email);
-    private _loginRule = new RegExp(ValideRules.login);
-    private _nameRule = new RegExp(ValideRules.name);
-    private _phoneRule = new RegExp(ValideRules.phone);
-    private _passwordRule = new RegExp(ValideRules.password);
+    private _emailRule = new RegExp(ValidateRules.email);
+    private _loginRule = new RegExp(ValidateRules.login);
+    private _nameRule = new RegExp(ValidateRules.name);
+    private _phoneRule = new RegExp(ValidateRules.phone);
+    private _passwordRule = new RegExp(ValidateRules.password);
 
     constructor() {
         super();
@@ -50,32 +50,32 @@ export class RegistrationPage extends Block {
         this.children.inputEmail = new Input({
             name: 'email',
             type: 'email',
-            pattern: ValideRules.email,
+            pattern: ValidateRules.email,
         });
         this.children.inputLogin = new Input({
             name: 'login',
             type: 'text',
-            pattern: ValideRules.login,
+            pattern: ValidateRules.login,
         });
         this.children.inputFirstName = new Input({
             name: 'first_name',
             type: 'text',
-            pattern: ValideRules.name,
+            pattern: ValidateRules.name,
         });
         this.children.inputSecondName = new Input({
             name: 'second_name',
             type: 'text',
-            pattern: ValideRules.name,
+            pattern: ValidateRules.name,
         });
         this.children.inputPhone = new Input({
             name: 'phone',
             type: 'tel',
-            pattern: ValideRules.phone,
+            pattern: ValidateRules.phone,
         });
         this.children.inputPassword = new Input({
             name: 'password',
             type: 'password',
-            pattern: ValideRules.password,
+            pattern: ValidateRules.password,
             events: {
                 input: () => {
                     const passwordElement = <HTMLInputElement>this.children.inputPassword.element;
@@ -88,7 +88,7 @@ export class RegistrationPage extends Block {
         this.children.inputPasswordCheck = new Input({
             name: 'passwordCheck',
             type: 'password',
-            pattern: ValideRules.password,
+            pattern: ValidateRules.password,
         });
         this.children.button = new Button({
             label: 'Зарегистрироваться',
