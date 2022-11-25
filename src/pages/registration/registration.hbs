@@ -4,27 +4,31 @@
             <div class="name">Регистрация</div>
             <div class="inputs">
                 <div class="tip">Почта</div>
-                <div class="inner">ivan@ya.ru</div>
-                <div class="error">werwer</div>
+                {{{ inputEmail }}}
+                <div class="error">Укажите верный адрес</div>
 
                 <div class="tip">Логин</div>
                 {{{ inputLogin }}}
                 <div class="error">Неверный логин</div>
 
                 <div class="tip">Имя</div>
-                <div class="inner">Иван</div>
-                <div class="error"></div>
+                {{{ inputFirstName }}}
+                <div class="error">Укажите имя</div>
+
                 <div class="tip">Фамилия</div>
-                <div class="inner">Иванов</div>
+                {{{ inputSecondName }}}
                 <div class="error"></div>
+
                 <div class="tip">Телефон</div>
-                <div class="inner">+70000000000</div>
+                {{{ inputPhone }}}
                 <div class="error">Укажите верный номер</div>
+
                 <div class="tip">Пароль</div>
-                <div class="inner">••••••••••••</div>
-                <div class="error"></div>
+                {{{ inputPassword }}}
+                <div class="error">Пароль введен неправильно</div>
+
                 <div class="tip">Пароль (еще раз)</div>
-                <div class="inner">••••••••••••</div>
+                {{{ inputPasswordCheck }}}
                 <div class="error">Пароли не совпадают</div>
             </div>
         </div>

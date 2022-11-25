@@ -7,6 +7,7 @@ type InputProps = {
     pattern: string;
     events?: {
         click?: () => void;
+        input?: () => void;
     }
 }
 
