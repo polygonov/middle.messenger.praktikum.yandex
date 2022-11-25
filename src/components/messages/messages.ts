@@ -10,7 +10,6 @@ type MessagesProps = {
 }
 
 export class MessagesComponent extends Block {
-
     constructor(props: MessagesProps) {
         super(props);
     }

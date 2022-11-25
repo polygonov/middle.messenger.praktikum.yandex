@@ -6,7 +6,7 @@ export class Block {
         INIT: 'init',
         FLOW_CDM: 'flow:component-did-mount',
         FLOW_CDU: 'flow:component-did-update',
-        FLOW_RENDER: 'flow:render'
+        FLOW_RENDER: 'flow:render',
     };
 
     id = nanoid(6);
@@ -102,7 +102,7 @@ export class Block {
     }
 
     protected render(): DocumentFragment {
-        return new DocumentFragment;
+        return new DocumentFragment();
     }
 
     getContent() {
@@ -134,7 +134,7 @@ export class Block {
         if (!events) { return; }
         Object.entries(events).forEach(([event, listener]) => {
             this._element!.removeEventListener(event, listener);
-        })
+        });
     }
 
     private _addEvents() {
@@ -143,7 +143,7 @@ export class Block {
         if (!events) { return; }
         Object.entries(events).forEach(([event, listener]) => {
             this._element!.addEventListener(event, listener);
-        })
+        });
     }
 
     private _createDocumentElement(tagName: string): HTMLElement {
@@ -165,12 +165,12 @@ export class Block {
     compile(template: (context: any) => string, context: any) {
         const fragment = this._createDocumentElement('template') as HTMLTemplateElement;
         Object.entries(this.children).forEach(([key, child]) => {
-            context[key] = `<div data-id="id-${child.id}"></div>`
-        })
+            context[key] = `<div data-id="id-${child.id}"></div>`;
+        });
         const htmlString = template(context);
         fragment.innerHTML = htmlString;
-        Object.entries(this.children).forEach(([key, child]) => {
-            const stub = fragment.content.querySelector(`[data-id="id-${child.id}"]`);  key;
+        Object.entries(this.children).forEach(([, child]) => {
+            const stub = fragment.content.querySelector(`[data-id="id-${child.id}"]`);
             if (!stub) {
                 return;
             }

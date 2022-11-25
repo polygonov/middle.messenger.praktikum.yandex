@@ -31,18 +31,18 @@ export class RegistrationPage extends Block {
                     const checkPhone = this._phoneRule.test(data[4][1].toString());
                     const checkPassword = this._passwordRule.test(data[5][1].toString());
                     const checkPasswordAgain = data[5][1].toString() === data[6][1].toString();
-                    if (checkEmail 
-                        && checkLogin 
-                        && checkFirstName 
-                        && checkSecondName 
-                        && checkPhone 
-                        && checkPassword 
-                        && checkPasswordAgain
-                        ) {
+                    if (checkEmail &&
+                        checkLogin &&
+                        checkFirstName &&
+                        checkSecondName &&
+                        checkPhone &&
+                        checkPassword &&
+                        checkPasswordAgain
+                    ) {
                         console.log(result);
                     }
-                }
-            }
+                },
+            },
         });
     }
 
@@ -78,12 +78,12 @@ export class RegistrationPage extends Block {
             pattern: ValidateRules.password,
             events: {
                 input: () => {
-                    const passwordElement = <HTMLInputElement>this.children.inputPassword.element;
+                    const passwordElement = <HTMLInputElement> this.children.inputPassword.element;
                     this.children.inputPasswordCheck.setProps({
                         pattern: '^' + passwordElement.value + '$',
-                    })
+                    });
                 },
-            }
+            },
         });
         this.children.inputPasswordCheck = new Input({
             name: 'passwordCheck',

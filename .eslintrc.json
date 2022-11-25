@@ -5,9 +5,17 @@
     },
     "parser": "@typescript-eslint/parser",
     "plugins": ["@typescript-eslint"],
+    "extends": "standard",
     "rules": {
       "max-len": [2, 100],
       "@typescript-eslint/no-unused-vars": 2,
-      "quotes": [2, "single", { "avoidEscape": true }]
+      "quotes": [2, "single", { "avoidEscape": true }],
+      "indent": ["error", 4],
+      "semi": [2, "always"],
+      "comma-dangle": [2, "always-multiline"],
+      "space-before-function-paren": ["error", "never"],
+      "no-useless-constructor": "off",
+      "no-use-before-define": "off",
+      "array-callback-return":"off"
       }
   } 

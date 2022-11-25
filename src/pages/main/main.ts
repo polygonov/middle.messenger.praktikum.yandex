@@ -9,7 +9,6 @@ import { Block } from '../../utils/Block';
 import template from './main.hbs';
 
 export class MainPage extends Block {
-
     showChats = true;
 
     protected initChildren(): void {
@@ -20,7 +19,7 @@ export class MainPage extends Block {
                     this.showChats = !this.showChats;
                     this.setProps({ showChats: this.showChats });
                 },
-            }
+            },
         });
         this.children.messagesHead = new MessagesHeadComponent({});
         this.children.chatActions = new ChatActionsComponent({});

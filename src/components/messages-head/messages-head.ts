@@ -10,7 +10,6 @@ type MessagesHeadProps = {
 }
 
 export class MessagesHeadComponent extends Block {
-
     constructor(props: MessagesHeadProps) {
         super(props);
     }
@@ -23,6 +22,6 @@ export class MessagesHeadComponent extends Block {
     }
 
     protected render(): DocumentFragment {
-        return this.compile(template, {avatar2, chatTools});
+        return this.compile(template, { avatar2, chatTools });
     }
 }

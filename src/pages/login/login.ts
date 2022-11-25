@@ -7,7 +7,7 @@ import template from './login.hbs';
 export class LoginPage extends Block {
     private _loginRule = new RegExp(ValidateRules.login);
     private _passwordRule = new RegExp(ValidateRules.password);
-    
+
     constructor() {
         super();
         this.addEvents();
@@ -26,8 +26,8 @@ export class LoginPage extends Block {
                     if (checkLogin && checkPassword) {
                         console.log(result);
                     }
-                }
-            }
+                },
+            },
         });
     }
 
@@ -44,7 +44,7 @@ export class LoginPage extends Block {
         this.children.inputPassword = new Input({
             name: 'password',
             type: 'password',
-            pattern:  ValidateRules.password,
+            pattern: ValidateRules.password,
         });
     }
 

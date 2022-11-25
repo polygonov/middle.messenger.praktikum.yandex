@@ -11,7 +11,6 @@ type MessageActionsProps = {
 }
 
 export class MessageActionsComponent extends Block {
-
     constructor(props: MessageActionsProps) {
         super(props);
     }
