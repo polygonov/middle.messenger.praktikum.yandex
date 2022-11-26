@@ -2,8 +2,9 @@
 @import '../pages/login/login.css';
 @import '../pages/main/main.css';
 @import '../pages/profile/profile.css';
+@import '../pages/change-password/change-password.css';
 @import '../pages/pageError.css';
-@import '../components/avatar/avatar.css';
+@import '../components/avatar-changer/avatar-changer.css';
 @import '../components/chats-head/chats-head.css';
 @import '../components/chats/chats.css';
 @import '../components/messages/messages.css';

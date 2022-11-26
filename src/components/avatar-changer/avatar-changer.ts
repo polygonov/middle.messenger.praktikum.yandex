@@ -1,15 +1,15 @@
 import { Block } from '../../utils/Block';
-import template from './avatar.hbs';
+import template from './avatar-changer.hbs';
 import memoji from '../../../static/memoji.png';
 
-type AvatarProps = {
+type AvatarChangerProps = {
     events?: {
         click?: () => void;
     }
 }
 
-export class AvatarComponent extends Block {
-    constructor(props: AvatarProps) {
+export class AvatarChangerComponent extends Block {
+    constructor(props: AvatarChangerProps) {
         super(props);
     }
 

@@ -1,7 +1,8 @@
 // import LoginPage from './pages/login';
 // import RegistrationPage from './pages/registration';
 // import MainPage from './pages/main';
-import ProfilePage from './pages/profile';
+// import ProfilePage from './pages/profile';
+import ChangePasswordPage from './pages/change-password';
 import { renderDOM } from './utils/renderDOM';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -11,6 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // renderDOM('#app', registrationPage);
     // const mainPage = new MainPage();
     // renderDOM('#app', mainPage);
-    const profilePage = new ProfilePage();
-    renderDOM('#app', profilePage);
+    // const profilePage = new ProfilePage();
+    // renderDOM('#app', profilePage);
+    const сhangePasswordPage = new ChangePasswordPage();
+    renderDOM('#app', сhangePasswordPage);
 });

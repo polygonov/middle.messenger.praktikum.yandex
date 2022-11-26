@@ -1,4 +1,4 @@
-import AvatarComponent from '../../components/avatar';
+import AvatarChangerComponent from '../../components/avatar-changer';
 import { Block } from '../../utils/Block';
 import template from './profile.hbs';
 import backPanel from '../../../static/back-panel.svg';
@@ -7,7 +7,7 @@ export class ProfilePage extends Block {
     showPopupChanger = false;
 
     protected initChildren(): void {
-        this.children.avatar = new AvatarComponent({
+        this.children.avatarChanger = new AvatarChangerComponent({
             events: {
                 click: () => {
                     console.log('avatar clicked');
