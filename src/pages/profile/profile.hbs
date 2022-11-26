@@ -1,0 +1,66 @@
+<div>
+    <a href="index.html">
+        <div class="back-panel">
+            <img src="{{ backPanel }}">
+        </div>
+    </a>
+
+    {{#if showPopupChanger}}
+    <div class="popup-background">
+        <div class="popup-changer">
+            <div>Загрузите файл</div>
+            <a href="">Выбрать файл на компьютере</a>
+            <button class="btn">Поменять</button>
+        </div>
+    </div>
+    {{/if}}
+
+    <div class="profile-page">
+        <div class="form">
+            <div class="content">
+                {{{ avatar }}}
+                <div class="name">Игорь</div>
+
+                <div class="inputs">
+                    <div class="field">
+                        <div class="tip">Почта</div>
+                        <div class="inner">igor@ya.ru</div>
+                    </div>
+                    <div class="field">
+                        <div class="tip">Логин</div>
+                        <div class="inner">harry</div>
+                    </div>
+                    <div class="field">
+                        <div class="tip">Имя</div>
+                        <div class="inner">Игорь</div>
+                    </div>
+                    <div class="field">
+                        <div class="tip">Фамилия</div>
+                        <div class="inner">Поляков</div>
+                    </div>
+                    <div class="field">
+                        <div class="tip">Имя в чате</div>
+                        <div class="inner">Polygon</div>
+                    </div>
+                    <div class="field">
+                        <div class="tip">Телефон</div>
+                        <div class="inner">+79310001122</div>
+                    </div>
+                </div>
+                <div class="changer">
+                    <a href="profile-changer.hbs">
+                        <div>Изменить данные</div>
+                    </a>
+                </div>
+                <div class="changer">
+                    <a href="profile-password.hbs">
+                        <div>Изменить пароль</div>
+                    </a>
+                </div>
+                <div class="exit">
+                    <div>Выйти</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
