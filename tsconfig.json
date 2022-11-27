@@ -1,10 +1,12 @@
 {
+    "compileOnSave": true,
     "compilerOptions": {
-    "outDir": "dist",
-    "target": "es2016",
-    "declaration": false,
-    "module": "commonjs",
-    "strictNullChecks": true,
-    "sourceMap": true,
-   }
+        "outDir": "dist",
+        "target": "es2017",
+        "declaration": false,
+        "module": "commonjs",
+        "sourceMap": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+    }
 }
