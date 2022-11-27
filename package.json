@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "parcel ./src/index.html --no-cache",
-    "build": "parcel build ./src/index.html",
+    "dev": "parcel ./src/*.html --no-cache",
+    "build": "parcel build ./src/*.html",
     "start": "npm run build && node ./server.ts"
   },
   "keywords": [],
