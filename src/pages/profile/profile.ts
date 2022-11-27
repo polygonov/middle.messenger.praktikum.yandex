@@ -2,6 +2,7 @@ import AvatarChangerComponent from '../../components/avatar-changer';
 import { Block } from '../../utils/Block';
 import template from './profile.hbs';
 import backPanel from '../../../static/back-panel.svg';
+import memoji from '../../../static/memoji.png';
 
 export class ProfilePage extends Block {
     showPopupChanger = false;
@@ -23,6 +24,6 @@ export class ProfilePage extends Block {
     }
 
     protected render(): DocumentFragment {
-        return this.compile(template, { backPanel, showPopupChanger: this.showPopupChanger });
+        return this.compile(template, { backPanel, memoji });
     }
 }

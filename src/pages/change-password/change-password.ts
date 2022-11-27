@@ -1,4 +1,3 @@
-import AvatarComponent from '../../components/avatar-changer';
 import { Block } from '../../utils/Block';
 import template from './change-password.hbs';
 import backPanel from '../../../static/back-panel.svg';
@@ -35,7 +34,6 @@ export class ChangePasswordPage extends Block {
     }
 
     protected initChildren(): void {
-        this.children.avatar = new AvatarComponent({});
         this.children.inputOldPassword = new Input({
             name: 'old_password',
             type: 'password',
@@ -60,7 +58,7 @@ export class ChangePasswordPage extends Block {
             pattern: ValidateRules.password,
         });
         this.children.button = new Button({
-            label: 'Сохранитьm',
+            label: 'Сохранить',
             type: 'submit',
         });
     }

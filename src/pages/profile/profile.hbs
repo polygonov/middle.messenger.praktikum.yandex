@@ -5,20 +5,12 @@
         </div>
     </a>
 
-    {{#if showPopupChanger}}
-    <div class="popup-background">
-        <div class="popup-changer">
-            <div>Загрузите файл</div>
-            <a href="">Выбрать файл на компьютере</a>
-            <button class="btn">Поменять</button>
-        </div>
-    </div>
-    {{/if}}
-
     <div class="profile-page">
         <div class="form">
             <div class="content">
-                {{{ avatarChanger }}}
+                <div class="avatar">
+                    <img src="{{ memoji }}">
+                </div>
                 <div class="name">Игорь</div>
 
                 <div class="shows">
@@ -37,10 +29,6 @@
                     <div class="field">
                         <div class="tip">Фамилия</div>
                         <div class="inner">Поляков</div>
-                    </div>
-                    <div class="field">
-                        <div class="tip">Имя в чате</div>
-                        <div class="inner">Polygon</div>
                     </div>
                     <div class="field">
                         <div class="tip">Телефон</div>
