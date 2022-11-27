@@ -7,19 +7,6 @@ main {
     font-family: 'Roboto', sans-serif;
 }
 
-#app {
-    --dark-brown: #1b2121;
-    --light-grey: #e5e5e5;
-    --error: #ff2f2f;
-    --dark-back: #222226;
-    --blue: #4193fb;
-    --dark-blue: #17191f;
-    --dark-grey: #1d2736;
-    --grey: #495057;
-    --light: #999999;
-    --bright-blue: #3369f3;
-}
-
 ::-webkit-scrollbar {
     width: 4px;
 }

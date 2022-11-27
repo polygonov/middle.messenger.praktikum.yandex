@@ -1,5 +1,6 @@
 .chat-search {
-    background: #495057;
+
+    background: var(--grey);
     border-radius: 5px;
     text-align: center;
     margin: 10px;
@@ -16,17 +17,17 @@
     }
 
     .label {
-        color: #e5e5e5;
+        color: var(--light-grey);
         font-size: 12px;
         width: 50px;
         margin: 5px;
-        background: #495057;
+        background: var(--grey);
         border: 0px;
         box-sizing: border-box;
         outline: none;
         display: block;
         &::placeholder {
-            color: #e5e5e5;
+            color: var(--light-grey);
         }
     }
 }
@@ -42,7 +43,7 @@
 
     .label {
         font-size: 12px;
-        color: #999999;
+        color: var(--light);
     }
     
     .icon {

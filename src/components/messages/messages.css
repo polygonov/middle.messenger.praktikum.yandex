@@ -1,9 +1,10 @@
 .message-list {
+
     flex-flow: column;
     height: calc(100% - 112px);
     width: 100%;
     overflow-y: auto;
-    background-color: #17191f;
+    background-color: var(--dark-blue);
 
     .message-hold {
         width: 100%;
@@ -18,8 +19,8 @@
 
     .left-message {
         max-width: 70%;
-        color: #e5e5e5;
-        background-color: #222226;
+        color: var(--light-grey);
+        background-color: var(--dark-back);
         margin-top: 10px;
         border-radius: 0 12px 12px 12px;
         padding: 12px;
@@ -29,7 +30,7 @@
         .status {  
             float: right;
             font-size: 9px;
-            color: #e5e5e5;
+            color: var(--light-grey);
         }
     }
 
@@ -40,13 +41,13 @@
         font-size: 14px;
         margin-top: 10px;
         padding: 12px;
-        background-color: #1d2736;
-        color: #e5e5e5;
+        background-color: var(--dark-grey);
+        color: var(--light-grey);
     
         .status {  
             float: right;
             font-size: 9px;
-            color: #3369f3;
+            color: var(--bright-blue);
             display: flex;
             align-items: center;
             justify-content: center;

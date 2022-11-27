@@ -12,3 +12,4 @@
 @import '../components/chat-actions/chat-actions.css';
 @import '../components/message-actions/message-actions.css';
 @import '../components/message-footer/message-footer.css';
+@import 'variables.css';

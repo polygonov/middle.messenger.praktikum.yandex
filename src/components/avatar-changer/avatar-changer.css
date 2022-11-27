@@ -1,12 +1,13 @@
 .avatar-changer {
+
     border-radius: 50%;
     width: 130px;
     height: 130px;
     margin-bottom: 21px;
-    background-color: #1b2121;
+    background-color: var(--dark-brown);
 
     &:hover {
-        background: #17191f;
+        background: var(--dark-blue);
         opacity: 0.3;
     }
 }
