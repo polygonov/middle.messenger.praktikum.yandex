@@ -1,0 +1,33 @@
+.messages-head {
+    width: 100%;
+    height: 55px;
+    color: #E5E5E5;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .message-head-left-block {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 20px;
+        font-size: 14px;
+    
+        .avatar {
+            border-radius: 50%;
+            width: 34px;
+            height: 34px;
+            margin: auto;
+            background-color: #495057;
+            margin-right: 10px;
+        }
+    }
+    
+    .chat-tools {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 50px;
+    }
+}

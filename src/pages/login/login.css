@@ -69,7 +69,7 @@
                     margin-bottom: 5px;
                 }
 
-                input:invalid:not(:placeholder-shown) + .error {
+                input:not(:focus):not(:placeholder-shown):invalid + .error {
                     display: block;
                 }
             }

@@ -1,15 +1,14 @@
-import ChatActionsComponent from '../../partials/chat-actions';
-import ChatsComponent from '../../partials/chats';
-import ChatsHeadComponent from '../../partials/chats-head';
-import MessageActionsComponent from '../../partials/message-actions';
-import MessageFooterComponent from '../../partials/message-footer';
-import MessagesComponent from '../../partials/messages';
-import MessagesHeadComponent from '../../partials/messages-head';
+import ChatActionsComponent from '../../components/chat-actions';
+import ChatsComponent from '../../components/chats';
+import ChatsHeadComponent from '../../components/chats-head';
+import MessageActionsComponent from '../../components/message-actions';
+import MessageFooterComponent from '../../components/message-footer';
+import MessagesComponent from '../../components/messages';
+import MessagesHeadComponent from '../../components/messages-head';
 import { Block } from '../../utils/Block';
 import template from './main.hbs';
 
 export class MainPage extends Block {
-
     showChats = true;
 
     protected initChildren(): void {
@@ -20,7 +19,7 @@ export class MainPage extends Block {
                     this.showChats = !this.showChats;
                     this.setProps({ showChats: this.showChats });
                 },
-            }
+            },
         });
         this.children.messagesHead = new MessagesHeadComponent({});
         this.children.chatActions = new ChatActionsComponent({});

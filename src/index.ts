@@ -1,10 +1,13 @@
-// import LoginPage from './pages/login';
-import MainPage from './pages/main';
+import LoginPage from './pages/login';
+import { httpFetch } from './utils/HTTPTransport';
 import { renderDOM } from './utils/renderDOM';
 
 document.addEventListener('DOMContentLoaded', () => {
-    // const loginPage = new LoginPage();
-    // renderDOM('#app', loginPage);
-    const mainPage = new MainPage();
-    renderDOM('#app', mainPage);
+    const loginPage = new LoginPage();
+    renderDOM('#app', loginPage);
+});
+
+const testURL = 'https://jsonplaceholder.typicode.com/users';
+httpFetch(testURL, {}).then((result: XMLHttpRequest) => {
+    console.log(JSON.parse(result.response));
 });

@@ -1,7 +1,6 @@
 type Handler = (...args: unknown[]) => void;
 
 export class EventBus {
-
     private _listeners: Record<string, Handler[]> = {};
 
     constructor() { }
@@ -20,7 +19,7 @@ export class EventBus {
         }
 
         this._listeners[event] = this._listeners[event].filter(
-            listener => listener !== callback
+            listener => listener !== callback,
         );
     }
 
@@ -29,7 +28,7 @@ export class EventBus {
             throw new Error(`Нет события: ${event}`);
         }
 
-        this._listeners[event].forEach(function (listener) {
+        this._listeners[event].forEach(function(listener) {
             listener(...args);
         });
     }
