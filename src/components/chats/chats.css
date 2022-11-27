@@ -20,14 +20,14 @@
             font-weight: 600;
             font-size: 13px;
             margin-top: 12px;
-            color: #4193FB;
+            color: #4193fb;
         }
         
         .last-message {
             margin-top: 4px;
             font-weight: 500;
             font-size: 12px;
-            color: #E5E5E5;
+            color: #e5e5e5;
         }
     }
 
@@ -47,8 +47,8 @@
             height: 20px;
             width: 20px;
             border-radius: 50%;
-            background-color: #4193FB;
-            color: #E5E5E5;
+            background-color: #4193fb;
+            color: #e5e5e5;
             font-size: 11px;
             display: flex;
             align-items: center;
@@ -67,6 +67,6 @@
 }
 
 .chat-preview-selected {
-    background-color: #1D2736;
+    background-color: #1d2736;
 }
 

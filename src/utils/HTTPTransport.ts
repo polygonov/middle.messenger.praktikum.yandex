@@ -12,7 +12,7 @@ type Options = {
     data?: any;
 }
 
-function queryStringify(data) {
+function queryStringify(data: any) {
     if (typeof data !== 'object') {
         throw new Error('Data must be object');
     }
@@ -23,23 +23,23 @@ function queryStringify(data) {
 }
 
 class HTTPTransport {
-    get = (url, options: Options = {}) => {
+    get = (url: string, options: Options = {}) => {
         return this.request(url, { ...options, method: METHODS.GET }, options.timeout);
     };
 
-    post = (url, options: Options = {}) => {
+    post = (url: string, options: Options = {}) => {
         return this.request(url, { ...options, method: METHODS.POST }, options.timeout);
     };
 
-    put = (url, options: Options = {}) => {
+    put = (url: string, options: Options = {}) => {
         return this.request(url, { ...options, method: METHODS.PUT }, options.timeout);
     };
 
-    delete = (url, options: Options = {}) => {
+    delete = (url: string, options: Options = {}) => {
         return this.request(url, { ...options, method: METHODS.DELETE }, options.timeout);
     };
 
-    request = (url, options: Options = {}, timeout = 5000) => {
+    request = (url: string, options: Options = {}, timeout = 5000) => {
         const { headers = {}, method, data } = options;
 
         return new Promise(function(resolve, reject) {
@@ -58,7 +58,7 @@ class HTTPTransport {
             );
 
             Object.keys(headers).forEach(key => {
-                xhr.setRequestHeader(key, headers[key]);
+                xhr.setRequestHeader(key, (headers as any)[key]);
             });
 
             xhr.onload = function() {

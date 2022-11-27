@@ -7,7 +7,7 @@
 
     .chat-sector {
         height: 100vh;
-        background-color: #1B2121;
+        background-color: #1b2121;
 
         .chat-head {
             width: 100%;
@@ -24,8 +24,8 @@
 
     .message-sector {
         height: 100vh;
-        background-color: #17191F;
-        color: #E5E5E5;
+        background-color: #17191f;
+        color: #e5e5e5;
         position: relative;
 
         .message-divider {
@@ -34,7 +34,7 @@
             margin: 0;
             margin-left: auto;
             margin-right: auto;
-            border-bottom: 1px solid #1D2736;
+            border-bottom: 1px solid #1d2736;
             box-shadow: none;
         }
 

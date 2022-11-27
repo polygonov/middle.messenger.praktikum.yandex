@@ -17,9 +17,9 @@ export class ChangePasswordPage extends Block {
     protected addEvents() {
         this.setProps({
             events: {
-                submit: e => {
+                submit: (e: SubmitEvent) => {
                     e.preventDefault();
-                    const data = [...new FormData(e.target)];
+                    const data = [...new FormData(e.target as HTMLFormElement)];
                     const entries = new Map(data.slice(0, -1));
                     const result = Object.fromEntries(entries);
                     const checkOldPassword = this._passwordRule.test(data[0][1].toString());

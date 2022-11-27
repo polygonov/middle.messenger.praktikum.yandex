@@ -19,9 +19,9 @@ export class RegistrationPage extends Block {
     protected addEvents() {
         this.setProps({
             events: {
-                submit: e => {
+                submit: (e: SubmitEvent) => {
                     e.preventDefault();
-                    const data = [...new FormData(e.target)];
+                    const data = [...new FormData(e.target as HTMLFormElement)];
                     const entries = new Map(data.slice(0, -1));
                     const result = Object.fromEntries(entries);
                     const checkEmail = this._emailRule.test(data[0][1].toString());

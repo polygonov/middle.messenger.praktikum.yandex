@@ -27,7 +27,7 @@ export class Block {
         eventBus.emit(Block.EVENTS.INIT);
     }
 
-    private _registerEvents(eventBus) {
+    private _registerEvents(eventBus: EventBus) {
         eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
         eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
         eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
@@ -66,7 +66,7 @@ export class Block {
         this._eventBus().emit(Block.EVENTS.FLOW_CDM);
     }
 
-    private _componentDidUpdate(oldProps, newProps) {
+    private _componentDidUpdate(oldProps: any, newProps: any) {
         const response = this.componentDidUpdate(oldProps, newProps);
         if (!response) {
             return;

@@ -3,10 +3,10 @@
     width: 130px;
     height: 130px;
     margin-bottom: 21px;
-    background-color: #1B2121;
+    background-color: #1b2121;
 
     &:hover {
-        background: #17191F;
+        background: #17191f;
         opacity: 0.3;
     }
 }

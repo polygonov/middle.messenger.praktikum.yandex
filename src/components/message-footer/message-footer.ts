@@ -23,9 +23,9 @@ export class MessageFooterComponent extends Block {
     protected addEvents() {
         this.setProps({
             events: {
-                submit: e => {
+                submit: (e: SubmitEvent) => {
                     e.preventDefault();
-                    const data = [...new FormData(e.target)];
+                    const data: any[] = [...new FormData(e.target as HTMLFormElement)];
                     const entries = new Map(data);
                     const result = Object.fromEntries(entries);
                     const checkMessage = this._messageRule.test(data[0][1].toString());

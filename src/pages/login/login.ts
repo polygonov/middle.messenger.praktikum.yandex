@@ -16,9 +16,9 @@ export class LoginPage extends Block {
     protected addEvents() {
         this.setProps({
             events: {
-                submit: e => {
+                submit: (e: SubmitEvent) => {
                     e.preventDefault();
-                    const data = [...new FormData(e.target)];
+                    const data = [...new FormData(e.target as HTMLFormElement)];
                     const entries = new Map(data);
                     const result = Object.fromEntries(entries);
                     const checkLogin = this._loginRule.test(data[0][1].toString());
