@@ -18,11 +18,16 @@
     .label {
         color: #E5E5E5;
         font-size: 12px;
-    }
-    
-    .label[placeholder]:empty:before {
-        content: attr(placeholder);
-        color: #E5E5E5;
+        width: 50px;
+        margin: 5px;
+        background: #495057;
+        border: 0px;
+        box-sizing: border-box;
+        outline: none;
+        display: block;
+        &::placeholder {
+            color: #E5E5E5;
+        }
     }
 }
 

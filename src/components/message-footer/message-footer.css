@@ -25,11 +25,24 @@
             margin-right: 20px;
             font-size: 14px;
         }
+
+        .inner {
+            width: 100%;
+            margin: 5px;
+            background: #495057;
+            border: 0px;
+            box-sizing: border-box;
+            outline: none;
+            display: block;
+            color: #E5E5E5;
+        }
     }
     
     .message-send {
         margin-right: 20px;
         margin-left: 10px;
+        background: rgba(0, 0, 0, 0);
+        border: none;
     }
 }
 

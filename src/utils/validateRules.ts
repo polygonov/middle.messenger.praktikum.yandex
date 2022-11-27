@@ -4,4 +4,5 @@ export enum ValidateRules {
     email = '^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$',
     name = '^[A-Z][A-Za-z]+$',
     phone = '^[+?0-9]{10,15}$',
+    notEmpty = '^(?!s*$).+',
 }
