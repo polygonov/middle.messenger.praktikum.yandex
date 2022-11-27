@@ -1,6 +1,6 @@
 # [Yandex.Practicum Messenger]
 
-Это проект Игоря Полякова, второй спринт модуля "Messange" для Yandex.Practicum.
+Это проект Игоря Полякова, второй спринт модуля "Messanger" для Yandex.Practicum.
 
 ## Описание.
 
