@@ -66,7 +66,7 @@ export abstract class Block<Props extends {}> {
         this._eventBus().emit(Block.EVENTS.FLOW_CDM);
     }
 
-    private _componentDidUpdate(oldProps: any, newProps: any) {
+    private _componentDidUpdate(oldProps: Props, newProps: Props) {
         const response = this.componentDidUpdate(oldProps, newProps);
         if (!response) {
             return;
@@ -109,7 +109,7 @@ export abstract class Block<Props extends {}> {
         return this.element;
     }
 
-    private _makePropsProxy(props: unknown): unknown {
+    private _makePropsProxy(props: Props): unknown {
         const self = this;
 
         return new Proxy(props as {}, {
@@ -162,7 +162,7 @@ export abstract class Block<Props extends {}> {
         content.style.display = 'none';
     }
 
-    compile(template: (context: any) => string, context: any) {
+    compile(template: (context: Props) => string, context: any) {
         const fragment = this._createDocumentElement('template') as HTMLTemplateElement;
         Object.entries(this.children).forEach(([key, child]) => {
             context[key] = `<div data-id="id-${child.id}"></div>`;
