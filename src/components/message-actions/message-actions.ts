@@ -18,7 +18,7 @@ export class MessageActionsComponent extends Block {
     protected initChildren(): void {
     }
 
-    componentDidUpdate(oldProps: unknown, newProps: unknown): boolean {
+    componentDidUpdate(oldProps: MessageActionsProps, newProps: MessageActionsProps): boolean {
         return super.componentDidUpdate(oldProps, newProps);
     }
 

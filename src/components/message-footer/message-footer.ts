@@ -48,7 +48,7 @@ export class MessageFooterComponent extends Block {
         });
     }
 
-    componentDidUpdate(oldProps: unknown, newProps: unknown): boolean {
+    componentDidUpdate(oldProps: MessageFooterProps, newProps: MessageFooterProps): boolean {
         return super.componentDidUpdate(oldProps, newProps);
     }
 

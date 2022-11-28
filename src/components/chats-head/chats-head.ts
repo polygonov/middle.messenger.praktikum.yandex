@@ -17,7 +17,7 @@ export class ChatsHeadComponent extends Block {
     protected initChildren(): void {
     }
 
-    componentDidUpdate(oldProps: unknown, newProps: unknown): boolean {
+    componentDidUpdate(oldProps: ChatsHeadProps, newProps: ChatsHeadProps): boolean {
         return super.componentDidUpdate(oldProps, newProps);
     }
 

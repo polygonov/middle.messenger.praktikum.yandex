@@ -18,7 +18,7 @@ export class ChatActionsComponent extends Block {
     protected initChildren(): void {
     }
 
-    componentDidUpdate(oldProps: unknown, newProps: unknown): boolean {
+    componentDidUpdate(oldProps: ChatActionsProps, newProps: ChatActionsProps): boolean {
         return super.componentDidUpdate(oldProps, newProps);
     }
 
