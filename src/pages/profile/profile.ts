@@ -1,4 +1,4 @@
-import AvatarChangerComponent from '../../components/avatar-changer';
+import { AvatarChangerComponent } from '../../components/avatar-changer';
 import { Block } from '../../utils/Block';
 import template from './profile.hbs';
 import backPanel from '../../../static/back-panel.svg';

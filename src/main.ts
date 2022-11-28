@@ -1,4 +1,4 @@
-import MainPage from './pages/main';
+import { MainPage } from './pages/main';
 import { renderDOM } from './utils/renderDOM';
 
 document.addEventListener('DOMContentLoaded', () => {

@@ -1,4 +1,4 @@
-import LoginPage from './pages/login';
+import { LoginPage } from './pages/login';
 import { httpFetch } from './utils/HTTPTransport';
 import { renderDOM } from './utils/renderDOM';
 import './index.css';

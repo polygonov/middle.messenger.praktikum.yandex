@@ -1,5 +1,5 @@
-import Button from '../../components/button';
-import Input from '../../components/input';
+import { Button } from '../../components/button';
+import { Input } from '../../components/input';
 import { Block } from '../../utils/Block';
 import { ValidateRules } from '../../utils/validateRules';
 import template from './login.hbs';

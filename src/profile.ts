@@ -1,4 +1,4 @@
-import ProfilePage from './pages/profile';
+import { ProfilePage } from './pages/profile';
 import { renderDOM } from './utils/renderDOM';
 
 document.addEventListener('DOMContentLoaded', () => {

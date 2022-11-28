@@ -1,10 +1,10 @@
 import { Block } from '../../utils/Block';
 import template from './change-profile.hbs';
 import backPanel from '../../../static/back-panel.svg';
-import Input from '../../components/input';
+import { Input } from '../../components/input';
 import { ValidateRules } from '../../utils/validateRules';
-import Button from '../../components/button';
-import AvatarChangerComponent from '../../components/avatar-changer';
+import { Button } from '../../components/button';
+import { AvatarChangerComponent } from '../../components/avatar-changer';
 
 export class ChangeProfilePage extends Block {
     showPopupChanger = false;

@@ -1,1 +1,1 @@
-export { MessageActionsComponent as default } from './message-actions';
+export { MessageActionsComponent } from './message-actions';

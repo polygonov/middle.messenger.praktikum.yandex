@@ -1,4 +1,4 @@
-import ChangePasswordPage from './pages/change-password';
+import { ChangePasswordPage } from './pages/change-password';
 import { renderDOM } from './utils/renderDOM';
 
 document.addEventListener('DOMContentLoaded', () => {

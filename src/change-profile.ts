@@ -1,4 +1,4 @@
-import ChangeProfilePage from './pages/change-profile';
+import { ChangeProfilePage } from './pages/change-profile';
 import { renderDOM } from './utils/renderDOM';
 
 document.addEventListener('DOMContentLoaded', () => {

@@ -1,1 +1,1 @@
-export { ChatsComponent as default } from './chats';
+export { ChatsComponent } from './chats';

@@ -1,10 +1,10 @@
 import { Block } from '../../utils/Block';
 import template from './change-password.hbs';
 import backPanel from '../../../static/back-panel.svg';
-import Input from '../../components/input';
+import { Input } from '../../components/input';
 import { ValidateRules } from '../../utils/validateRules';
 import memoji from '../../../static/memoji.png';
-import Button from '../../components/button';
+import { Button } from '../../components/button';
 
 export class ChangePasswordPage extends Block {
     private _passwordRule = new RegExp(ValidateRules.password);

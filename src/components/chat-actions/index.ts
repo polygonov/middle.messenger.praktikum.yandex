@@ -1,1 +1,1 @@
-export { ChatActionsComponent as default } from './chat-actions';
+export { ChatActionsComponent } from './chat-actions';
