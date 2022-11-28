@@ -8,7 +8,7 @@ type AvatarChangerProps = {
     }
 }
 
-export class AvatarChangerComponent extends Block {
+export class AvatarChangerComponent extends Block<AvatarChangerProps> {
     constructor(props: AvatarChangerProps) {
         super(props);
     }

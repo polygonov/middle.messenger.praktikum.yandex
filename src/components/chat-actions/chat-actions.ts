@@ -10,7 +10,7 @@ type ChatActionsProps = {
     }
 }
 
-export class ChatActionsComponent extends Block {
+export class ChatActionsComponent extends Block<ChatActionsProps> {
     constructor(props: ChatActionsProps) {
         super(props);
     }

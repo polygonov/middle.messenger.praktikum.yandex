@@ -4,7 +4,13 @@ import template from './profile.hbs';
 import backPanel from '../../../static/back-panel.svg';
 import memoji from '../../../static/memoji.png';
 
-export class ProfilePage extends Block {
+type ProfilePageProps = {
+    events?: {
+        click?: () => void;
+    }
+}
+
+export class ProfilePage extends Block<ProfilePageProps> {
     showPopupChanger = false;
 
     protected initChildren(): void {

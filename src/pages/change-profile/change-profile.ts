@@ -6,7 +6,13 @@ import { ValidateRules } from '../../utils/validateRules';
 import { Button } from '../../components/button';
 import { AvatarChangerComponent } from '../../components/avatar-changer';
 
-export class ChangeProfilePage extends Block {
+type ChangeProfilePageProps = {
+    events?: {
+        click?: () => void;
+    }
+}
+
+export class ChangeProfilePage extends Block<ChangeProfilePageProps> {
     showPopupChanger = false;
     private _emailRule = new RegExp(ValidateRules.email);
     private _loginRule = new RegExp(ValidateRules.login);

@@ -10,7 +10,7 @@ type MessageActionsProps = {
     }
 }
 
-export class MessageActionsComponent extends Block {
+export class MessageActionsComponent extends Block<MessageActionsProps> {
     constructor(props: MessageActionsProps) {
         super(props);
     }

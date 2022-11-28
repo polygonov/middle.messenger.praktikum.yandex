@@ -12,7 +12,7 @@ type MessageFooterProps = {
     }
 }
 
-export class MessageFooterComponent extends Block {
+export class MessageFooterComponent extends Block<MessageFooterProps> {
     private _messageRule = new RegExp(ValidateRules.notEmpty);
 
     constructor(props: MessageFooterProps) {

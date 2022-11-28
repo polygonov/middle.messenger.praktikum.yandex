@@ -4,7 +4,13 @@ import { Block } from '../../utils/Block';
 import { ValidateRules } from '../../utils/validateRules';
 import template from './registration.hbs';
 
-export class RegistrationPage extends Block {
+type RegistrationPageProps = {
+    events?: {
+        click?: () => void;
+    }
+}
+
+export class RegistrationPage extends Block<RegistrationPageProps> {
     private _emailRule = new RegExp(ValidateRules.email);
     private _loginRule = new RegExp(ValidateRules.login);
     private _nameRule = new RegExp(ValidateRules.name);

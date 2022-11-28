@@ -9,7 +9,7 @@ type MessagesHeadProps = {
     }
 }
 
-export class MessagesHeadComponent extends Block {
+export class MessagesHeadComponent extends Block<MessagesHeadProps> {
     constructor(props: MessagesHeadProps) {
         super(props);
     }

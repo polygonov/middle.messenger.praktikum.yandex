@@ -1,4 +1,4 @@
-enum METHODS {
+export enum Methods {
     GET = 'GET',
     POST = 'POST',
     PUT = 'PUT',
@@ -6,8 +6,8 @@ enum METHODS {
 };
 
 type Options = {
-    headers?: string;
-    method?: METHODS;
+    headers?: any;
+    method?: Methods;
     timeout?: number;
     data?: any;
 }
@@ -22,21 +22,25 @@ function queryStringify(data: any) {
     }, '?');
 }
 
-class HTTPTransport {
+export class HTTPTransport {
     get = (url: string, options: Options = {}) => {
-        return this.request(url, { ...options, method: METHODS.GET }, options.timeout);
+        const { data } = options;
+        if (data) {
+            url = `${url}${queryStringify(data)}`;
+        }
+        return this.request(url, { ...options, method: Methods.GET }, options.timeout);
     };
 
     post = (url: string, options: Options = {}) => {
-        return this.request(url, { ...options, method: METHODS.POST }, options.timeout);
+        return this.request(url, { ...options, method: Methods.POST }, options.timeout);
     };
 
     put = (url: string, options: Options = {}) => {
-        return this.request(url, { ...options, method: METHODS.PUT }, options.timeout);
+        return this.request(url, { ...options, method: Methods.PUT }, options.timeout);
     };
 
     delete = (url: string, options: Options = {}) => {
-        return this.request(url, { ...options, method: METHODS.DELETE }, options.timeout);
+        return this.request(url, { ...options, method: Methods.DELETE }, options.timeout);
     };
 
     request = (url: string, options: Options = {}, timeout = 5000) => {
@@ -48,14 +52,9 @@ class HTTPTransport {
             }
 
             const xhr = new XMLHttpRequest();
-            const isGet = method === METHODS.GET;
+            const isGet = method === Methods.GET;
 
-            xhr.open(
-                method,
-                isGet && !!data
-                    ? `${url}${queryStringify(data)}`
-                    : url,
-            );
+            xhr.open(method, url);
 
             Object.keys(headers).forEach(key => {
                 xhr.setRequestHeader(key, (headers as any)[key]);
@@ -83,7 +82,7 @@ class HTTPTransport {
 const http = new HTTPTransport();
 
 export function httpFetch(url: string, options: Options) {
-    return http.request(url, { ...options, method: METHODS.GET })
+    return http.request(url, { ...options, method: Methods.GET })
         .then((result: XMLHttpRequest) => {
             return result;
         })

@@ -6,7 +6,13 @@ import { ValidateRules } from '../../utils/validateRules';
 import memoji from '../../../static/memoji.png';
 import { Button } from '../../components/button';
 
-export class ChangePasswordPage extends Block {
+type ChangePasswordPageProps = {
+    events?: {
+        click?: () => void;
+    }
+}
+
+export class ChangePasswordPage extends Block<ChangePasswordPageProps> {
     private _passwordRule = new RegExp(ValidateRules.password);
 
     constructor() {

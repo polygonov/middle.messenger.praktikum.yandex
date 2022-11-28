@@ -8,7 +8,13 @@ import { MessagesHeadComponent } from '../../components/messages-head';
 import { Block } from '../../utils/Block';
 import template from './main.hbs';
 
-export class MainPage extends Block {
+type MainPageProps = {
+    events?: {
+        click?: () => void;
+    }
+}
+
+export class MainPage extends Block<MainPageProps> {
     showChats = true;
 
     protected initChildren(): void {
