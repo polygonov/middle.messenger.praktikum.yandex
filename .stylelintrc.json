@@ -1,0 +1,10 @@
+{
+    "rules": {
+      "color-hex-case": "lower"
+    },
+    "ignoreFiles": [
+      "/dist",
+      "**/*.min.js",
+      "/node_modules"
+    ]
+} 

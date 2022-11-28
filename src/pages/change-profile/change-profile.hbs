@@ -1,0 +1,51 @@
+<div>
+    <a href="profile.html">
+        <div class="back-panel">
+            <img src="{{ backPanel }}">
+        </div>
+    </a>
+
+    {{#if showPopupChanger}}
+    <div class="popup-background">
+        <div class="popup-changer">
+            <div>Загрузите файл</div>
+            <a href="">Выбрать файл на компьютере</a>
+            <button class="btn">Поменять</button>
+        </div>
+    </div>
+    {{/if}}
+
+    <div class="profile-page">
+        <form class="form">
+            <div class="content">
+                {{{ avatarChanger }}}
+                <div class="name">Игорь</div>
+
+                <div class="inputs">
+                    <div class="field">
+                        <div class="tip">Почта</div>
+                        {{{ inputEmail }}}
+                    </div>
+                    <div class="field">
+                        <div class="tip">Логин</div>
+                        {{{ inputLogin }}}
+                    </div>
+                    <div class="field">
+                        <div class="tip">Имя</div>
+                        {{{ inputFirstName }}}
+                    </div>
+                    <div class="field">
+                        <div class="tip">Фамилия</div>
+                        {{{ inputSecondName }}}
+                    </div>
+                    <div class="field">
+                        <div class="tip">Телефон</div>
+                        {{{ inputPhone }}}
+                    </div>
+                </div>
+
+                <button class="btn">Сохранить</button>
+            </div>
+        </form>
+    </div>
+</div>

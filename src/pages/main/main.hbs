@@ -1,0 +1,29 @@
+<div class="separate">
+
+    <div class="chat-sector">
+        <div class="chat-head">
+            {{{ chatsHead }}}
+        </div>
+        <div class="chat-list">
+            {{{ chats }}}
+        </div>
+    </div>
+    <div class="message-sector">
+        {{#if showChats}}
+            {{{ messagesHead }}}
+            <div class="message-divider"></div>
+            {{{ chatActions }}}
+            {{{ messages }}}
+            {{{ messageAction }}}
+            <div class="message-divider"></div>
+            {{{ messageFooter }}}
+        {{else}}
+        <div class="not-selected">
+            <div>Выберите чат, чтобы отправить сообщение</div>
+        </div>
+        {{/if}}
+
+
+    </div>
+
+</div>

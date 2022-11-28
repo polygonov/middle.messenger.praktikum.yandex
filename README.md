@@ -1,45 +1,40 @@
 # [Yandex.Practicum Messenger]
 
-This progect is Polyakov Igor first sprint task for Yandex.Practicum.
+Это проект Игоря Полякова, второй спринт модуля "Messanger" для Yandex.Practicum.
 
-## Description
+## Описание.
 
-It's just a Html+CSS template of messanger. It's based on next technologies:
-* Handlebars as templating
-* PostCSS Nested is for usefull BAM style
-* PostCSS import is for import CSS 
+Текущее состояние проекта - все страницы и сегменты переведены и наследуются от класса Block, который инкапсулирует отрисовку view в DOM и позволяет расширять элементы дополнителными свойствами и событиями ( внедрен компонентный подход). Добавлен класс для работы с запросами, он производит тестовый запрос на страницу main.html и выводит результат в консоль.
 
-## Visual prototype
+## Наглядный прототип.
 
-Visual prototype was made in Figma, it's based on Yandex.Practicum template for first sprint, but has dark theme and some new frames and icons.
-You can watch my Figma template on kink below:
+Визуальный прототип был сделан в Figma, он основан на шаблоне Яндекс.Практикума для первого спринта, но имеет темную тему и несколько новых рамок и иконок.
+Вы можете посмотреть мой шаблон Figma по ссылке ниже:
 https://www.figma.com/file/TgBoZcxSUZvEnEMZmTmtlm/Chat_external_link_Igor_Polyakov?node-id=0%3A1
 
-## How to use
+## Как использовать?
 
-* "npm run dev" - is command to start development server based on Parcel
-* "npm run build" - is command to buid dist folder, Nentlify uses it for buld
-* "npm run start" - is command to buid dist folder and start local Express server on port 3000
+* "npm run dev" - это команда для запуска сервера разработки на Parcel
+* "npm run build" - это команда для создания папки dist, Netlify использует ее для сборки
+* "npm run start" - это команда для создания папки dist и запуска локального сервера Express на порту 3000
 
-## How to navigate
+## Что с навигацией?
 
-Project has 9 next pages:
-* index.html - it's main page with dialogs previews, navigate to "index-selected" and "profile"
-* index-selected.html - it's same as "index", but has messages block and selected dialog, navigate to "profile"
-* login.html - it's page to login, navigate you to "index" or "login-reg"
-* login-reg.html - it's page to registration, navigate you to "index" or "login" 
-* profile.html - it's page to see profile data, navigate to "index", "profile-changer", "profile-password"
-* profile-changer.html - it's page to change profile data, navigate to "index"
-* profile-password.html - it's page to change password, navigate to "index"
-* page404.html - it's page on 404 error, navigate to "index"
-* page500.html - it's page on 5** error, navigate to "index"
+В проекте присутствует 8 страниц:
+* index.html - страница входа в приложение, ссылается на "registration", сабмитит форму ввода в консоль
+* registration.html - страница регистрации, ссылается на "login", сабмитит форму ввода в консоль
+* main.html - главная страница с просмотром диалогов и сообщений, ссылается к "profile", сабмитит сообщение в консоль
+* profile.html - страница профиля, ссылается к "main", "change-profile", "change-password"
+* change-profile.html - страница редактирования профиля и аватара, ссылается к "main", сабмитит форму ввода в консоль
+* change-password.html - страница редактирования пароля, ссылается к "main", сабмитит форму ввода в консоль
+* page404.html - страница 404 ошибки, ссылается к "index"
+* page500.html - страница 5** ошибки, ссылается к "index"
 
-Enterence point is index.hbs page. If you click on dialogs, you will see messages block. Profile label link to profile settings.
-Auth block is out of main app. If you want to see auth pages, you shoud type their path on browser search line "login.html" or "login-reg.html"
+Точка входа — страница index.html (LoginPage). Это блок авторизации и регистрации. Он не ссылается на основное приложение, т.к. кнопка "Авторизоваться" сабмитит форму в консоль. Для перехода в основную часть, пройдите по ссылке на страницу main.html .
 
-## Take a look
+## Где посмотреть?
 
-This project deployed on Netlify, take a look!
+Проект развернут на Netlify, доступен по ссылке ниже.
 
 https://delicate-profiterole-548651.netlify.app/
 

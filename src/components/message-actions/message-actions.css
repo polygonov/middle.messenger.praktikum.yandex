@@ -1,0 +1,27 @@
+.message-actions {
+
+    position: absolute;
+    margin-left: 10px;
+    top: calc(100% - 205px);
+    width: 162px;
+    height: 98px;
+    background: var(--dark-brown);
+    border-radius: 12px;
+    font-size: 12px;  
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    padding: 0px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+    .item { 
+        margin-left: 15px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .icon {
+        margin-right: 14px;
+    }
+}
