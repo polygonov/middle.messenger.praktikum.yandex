@@ -1,4 +1,4 @@
-import RegistrationPage from './pages/registration';
+import { RegistrationPage } from './pages/registration';
 import { renderDOM } from './utils/renderDOM';
 
 document.addEventListener('DOMContentLoaded', () => {

@@ -1,1 +1,1 @@
-export { MessageSender as default } from './message-sender';
+export { MessageSender } from './message-sender';

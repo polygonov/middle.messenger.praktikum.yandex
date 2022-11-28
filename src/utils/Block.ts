@@ -1,7 +1,7 @@
 import { nanoid } from 'nanoid';
 import { EventBus } from './EventBus';
 
-export class Block {
+export abstract class Block<Props extends {}> {
     static EVENTS = {
         INIT: 'init',
         FLOW_CDM: 'flow:component-did-mount',
@@ -14,7 +14,7 @@ export class Block {
     private _eventBus: () => EventBus;
     private _eventsLinks: Record<string, () => void>;
     protected props: any;
-    protected children: Record<string, Block>;
+    protected children: Record<string, Block<Props>>;
 
     constructor(propsAndChildren: unknown = {}) {
         const { props, children } = this.getChildren(propsAndChildren);
@@ -27,7 +27,7 @@ export class Block {
         eventBus.emit(Block.EVENTS.INIT);
     }
 
-    private _registerEvents(eventBus) {
+    private _registerEvents(eventBus: EventBus) {
         eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
         eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
         eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
@@ -39,7 +39,7 @@ export class Block {
     }
 
     getChildren(propsAndChildren: any) {
-        const children: Record<string, Block> = {};
+        const children: Record<string, Block<Props>> = {};
         const props: any = {};
         Object.entries(propsAndChildren).map(([key, value]) => {
             if (value instanceof Block) {
@@ -66,7 +66,7 @@ export class Block {
         this._eventBus().emit(Block.EVENTS.FLOW_CDM);
     }
 
-    private _componentDidUpdate(oldProps, newProps) {
+    private _componentDidUpdate(oldProps: any, newProps: any) {
         const response = this.componentDidUpdate(oldProps, newProps);
         if (!response) {
             return;

@@ -21,7 +21,7 @@ https://www.figma.com/file/TgBoZcxSUZvEnEMZmTmtlm/Chat_external_link_Igor_Polyak
 ## Что с навигацией?
 
 В проекте присутствует 8 страниц:
-* login.html - страница входа в приложение, ссылается на "registration", сабмитит форму ввода в консоль
+* index.html - страница входа в приложение, ссылается на "registration", сабмитит форму ввода в консоль
 * registration.html - страница регистрации, ссылается на "login", сабмитит форму ввода в консоль
 * main.html - главная страница с просмотром диалогов и сообщений, ссылается к "profile", сабмитит сообщение в консоль
 * profile.html - страница профиля, ссылается к "main", "change-profile", "change-password"

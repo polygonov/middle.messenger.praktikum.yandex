@@ -5,7 +5,7 @@
     top: calc(100% - 205px);
     width: 162px;
     height: 98px;
-    background: #1B2121;
+    background: var(--dark-brown);
     border-radius: 12px;
     font-size: 12px;  
     display: flex;

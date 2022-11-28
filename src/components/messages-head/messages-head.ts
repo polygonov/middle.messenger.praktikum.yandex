@@ -9,7 +9,7 @@ type MessagesHeadProps = {
     }
 }
 
-export class MessagesHeadComponent extends Block {
+export class MessagesHeadComponent extends Block<MessagesHeadProps> {
     constructor(props: MessagesHeadProps) {
         super(props);
     }
@@ -17,7 +17,7 @@ export class MessagesHeadComponent extends Block {
     protected initChildren(): void {
     }
 
-    componentDidUpdate(oldProps: unknown, newProps: unknown): boolean {
+    componentDidUpdate(oldProps: MessagesHeadProps, newProps: MessagesHeadProps): boolean {
         return super.componentDidUpdate(oldProps, newProps);
     }
 

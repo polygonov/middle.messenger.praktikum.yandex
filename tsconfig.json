@@ -1,10 +1,21 @@
 {
-    "compilerOptions": {
+  "compileOnSave": true,
+  "compilerOptions": {
     "outDir": "dist",
-    "target": "es2016",
+    "target": "es5",
     "declaration": false,
     "module": "commonjs",
-    "strictNullChecks": true,
     "sourceMap": true,
-   }
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "downlevelIteration": true,
+    "esModuleInterop": true,
+    "lib": [
+        "es5", "es6", "dom", "dom.iterable"
+    ]
+  }
 }

@@ -2,7 +2,7 @@
     position: absolute;
     height: 100%;
     width: 64px;
-    background: #222226;
+    background: var(--dark-back);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -29,7 +29,7 @@
         position: absolute;
         width: 340px;
         height: 257px;
-        background: #222226;
+        background: var(--dark-back);
         border-radius: 12px;
         padding-top: 40px;
         padding-bottom: 40px;
@@ -38,16 +38,16 @@
         flex-flow: column;
         justify-content: space-between;
         align-items: center;
-        color: #E5E5E5;
+        color: var(--light-grey);
 
         .btn {
-            background: #4193FB;
+            background: var(--blue);
             border-radius: 8px;
             border: none;
             width: 280px;
             height: 37px;
             margin-bottom: 14px;
-            color: #E5E5E5;
+            color: var(--light-grey);
         }
     }    
 }
@@ -56,7 +56,7 @@
     position: absolute;
     height: 100%;
     width: 100%;
-    background-color: #1B2121;
+    background-color: var(--dark-brown);
     display: flex;
     align-items: center;
     justify-content: center; 
@@ -73,12 +73,12 @@
             width: 100%;
             display: flex;
             flex-flow: column;
-            color: #E5E5E5;
+            color: var(--light-grey);
             align-items: center;
             margin-top: 60px;
 
             .name {
-                color: #4193FB;
+                color: var(--blue);
                 font-size: 16px;
                 margin-bottom: 60px;
             }
@@ -89,7 +89,7 @@
                 .field {
                     display: flex;
                     justify-content: space-between;
-                    border-bottom: 1px solid #E5E5E5;
+                    border-bottom: 1px solid var(--light-grey);
                     box-shadow: none;
                     padding-bottom: 10px;
                     margin-bottom: 10px;
@@ -107,21 +107,21 @@
             }
 
             .btn {
-                background: #4193FB;
+                background: var(--blue);
                 border-radius: 8px;
                 border: none;
                 width: 280px;
                 height: 37px;
                 margin-bottom: 14px;
-                color: #E5E5E5;
+                color: var(--light-grey);
             }
 
             .changer {
                 width: 100%;
                 display: flex;
-                color: #4193FB;
+                color: var(--blue);
                 font-size: 14px;
-                border-bottom: 1px solid #E5E5E5;
+                border-bottom: 1px solid var(--light-grey);
                 padding-bottom: 10px;
                 margin-bottom: 10px;
             }
@@ -129,7 +129,7 @@
             .exit {
                 width: 100%;
                 display: flex;
-                color: #FF2F2F;
+                color: var(--error);
                 font-size: 14px;
                 padding-bottom: 10px;
                 margin-bottom: 10px;

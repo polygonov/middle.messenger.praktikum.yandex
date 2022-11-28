@@ -1,1 +1,1 @@
-export { MessagesComponent as default } from './messages';
+export { MessagesComponent } from './messages';

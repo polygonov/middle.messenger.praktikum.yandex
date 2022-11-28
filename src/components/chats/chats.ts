@@ -11,7 +11,7 @@ type ChatsProps = {
     }
 }
 
-export class ChatsComponent extends Block {
+export class ChatsComponent extends Block<ChatsProps> {
     constructor(props: ChatsProps) {
         super(props);
     }
@@ -19,7 +19,7 @@ export class ChatsComponent extends Block {
     protected initChildren(): void {
     }
 
-    componentDidUpdate(oldProps: unknown, newProps: unknown): boolean {
+    componentDidUpdate(oldProps: ChatsProps, newProps: ChatsProps): boolean {
         return super.componentDidUpdate(oldProps, newProps);
     }
 

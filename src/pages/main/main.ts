@@ -1,14 +1,20 @@
-import ChatActionsComponent from '../../components/chat-actions';
-import ChatsComponent from '../../components/chats';
-import ChatsHeadComponent from '../../components/chats-head';
-import MessageActionsComponent from '../../components/message-actions';
-import MessageFooterComponent from '../../components/message-footer';
-import MessagesComponent from '../../components/messages';
-import MessagesHeadComponent from '../../components/messages-head';
+import { ChatActionsComponent } from '../../components/chat-actions';
+import { ChatsComponent } from '../../components/chats';
+import { ChatsHeadComponent } from '../../components/chats-head';
+import { MessageActionsComponent } from '../../components/message-actions';
+import { MessageFooterComponent } from '../../components/message-footer';
+import { MessagesComponent } from '../../components/messages';
+import { MessagesHeadComponent } from '../../components/messages-head';
 import { Block } from '../../utils/Block';
 import template from './main.hbs';
 
-export class MainPage extends Block {
+type MainPageProps = {
+    events?: {
+        click?: () => void;
+    }
+}
+
+export class MainPage extends Block<MainPageProps> {
     showChats = true;
 
     protected initChildren(): void {

@@ -1,12 +1,18 @@
 import { Block } from '../../utils/Block';
 import template from './change-password.hbs';
 import backPanel from '../../../static/back-panel.svg';
-import Input from '../../components/input';
+import { Input } from '../../components/input';
 import { ValidateRules } from '../../utils/validateRules';
 import memoji from '../../../static/memoji.png';
-import Button from '../../components/button';
+import { Button } from '../../components/button';
 
-export class ChangePasswordPage extends Block {
+type ChangePasswordPageProps = {
+    events?: {
+        click?: () => void;
+    }
+}
+
+export class ChangePasswordPage extends Block<ChangePasswordPageProps> {
     private _passwordRule = new RegExp(ValidateRules.password);
 
     constructor() {
@@ -17,9 +23,9 @@ export class ChangePasswordPage extends Block {
     protected addEvents() {
         this.setProps({
             events: {
-                submit: e => {
+                submit: (e: SubmitEvent) => {
                     e.preventDefault();
-                    const data = [...new FormData(e.target)];
+                    const data = [...new FormData(e.target as HTMLFormElement)];
                     const entries = new Map(data.slice(0, -1));
                     const result = Object.fromEntries(entries);
                     const checkOldPassword = this._passwordRule.test(data[0][1].toString());

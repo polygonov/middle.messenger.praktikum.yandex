@@ -1,1 +1,1 @@
-export { MessageFooterComponent as default } from './message-footer';
+export { MessageFooterComponent } from './message-footer';

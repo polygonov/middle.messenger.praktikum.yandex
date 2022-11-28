@@ -1,10 +1,16 @@
-import Button from '../../components/button';
-import Input from '../../components/input';
+import { Button } from '../../components/button';
+import { Input } from '../../components/input';
 import { Block } from '../../utils/Block';
 import { ValidateRules } from '../../utils/validateRules';
 import template from './login.hbs';
 
-export class LoginPage extends Block {
+type LoginPageProps = {
+    events?: {
+        click?: () => void;
+    }
+}
+
+export class LoginPage extends Block<LoginPageProps> {
     private _loginRule = new RegExp(ValidateRules.login);
     private _passwordRule = new RegExp(ValidateRules.password);
 
@@ -16,9 +22,9 @@ export class LoginPage extends Block {
     protected addEvents() {
         this.setProps({
             events: {
-                submit: e => {
+                submit: (e: SubmitEvent) => {
                     e.preventDefault();
-                    const data = [...new FormData(e.target)];
+                    const data = [...new FormData(e.target as HTMLFormElement)];
                     const entries = new Map(data);
                     const result = Object.fromEntries(entries);
                     const checkLogin = this._loginRule.test(data[0][1].toString());

@@ -10,7 +10,7 @@ type ChatActionsProps = {
     }
 }
 
-export class ChatActionsComponent extends Block {
+export class ChatActionsComponent extends Block<ChatActionsProps> {
     constructor(props: ChatActionsProps) {
         super(props);
     }
@@ -18,7 +18,7 @@ export class ChatActionsComponent extends Block {
     protected initChildren(): void {
     }
 
-    componentDidUpdate(oldProps: unknown, newProps: unknown): boolean {
+    componentDidUpdate(oldProps: ChatActionsProps, newProps: ChatActionsProps): boolean {
         return super.componentDidUpdate(oldProps, newProps);
     }
 

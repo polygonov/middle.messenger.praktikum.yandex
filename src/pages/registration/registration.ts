@@ -1,10 +1,16 @@
-import Button from '../../components/button';
-import Input from '../../components/input';
+import { Button } from '../../components/button';
+import { Input } from '../../components/input';
 import { Block } from '../../utils/Block';
 import { ValidateRules } from '../../utils/validateRules';
 import template from './registration.hbs';
 
-export class RegistrationPage extends Block {
+type RegistrationPageProps = {
+    events?: {
+        click?: () => void;
+    }
+}
+
+export class RegistrationPage extends Block<RegistrationPageProps> {
     private _emailRule = new RegExp(ValidateRules.email);
     private _loginRule = new RegExp(ValidateRules.login);
     private _nameRule = new RegExp(ValidateRules.name);
@@ -19,9 +25,9 @@ export class RegistrationPage extends Block {
     protected addEvents() {
         this.setProps({
             events: {
-                submit: e => {
+                submit: (e: SubmitEvent) => {
                     e.preventDefault();
-                    const data = [...new FormData(e.target)];
+                    const data = [...new FormData(e.target as HTMLFormElement)];
                     const entries = new Map(data.slice(0, -1));
                     const result = Object.fromEntries(entries);
                     const checkEmail = this._emailRule.test(data[0][1].toString());

@@ -1,4 +1,4 @@
-import Page500Page from './pages/page500';
+import { Page500Page } from './pages/page500';
 import { renderDOM } from './utils/renderDOM';
 
 document.addEventListener('DOMContentLoaded', () => {

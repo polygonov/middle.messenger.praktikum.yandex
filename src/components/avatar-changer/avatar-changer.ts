@@ -8,7 +8,7 @@ type AvatarChangerProps = {
     }
 }
 
-export class AvatarChangerComponent extends Block {
+export class AvatarChangerComponent extends Block<AvatarChangerProps> {
     constructor(props: AvatarChangerProps) {
         super(props);
     }
@@ -16,7 +16,7 @@ export class AvatarChangerComponent extends Block {
     protected initChildren(): void {
     }
 
-    componentDidUpdate(oldProps: unknown, newProps: unknown): boolean {
+    componentDidUpdate(oldProps: AvatarChangerProps, newProps: AvatarChangerProps): boolean {
         return super.componentDidUpdate(oldProps, newProps);
     }
 

@@ -2,9 +2,9 @@ import { Block } from '../../utils/Block';
 import template from './message-footer.hbs';
 import importIcon from '../../../static/import.svg';
 import sendMessage from '../../../static/send-message.svg';
-import Input from '../input';
+import { Input } from '../input';
 import { ValidateRules } from '../../utils/validateRules';
-import MessageSender from '../message-sender';
+import { MessageSender } from '../message-sender';
 
 type MessageFooterProps = {
     events?: {
@@ -12,7 +12,7 @@ type MessageFooterProps = {
     }
 }
 
-export class MessageFooterComponent extends Block {
+export class MessageFooterComponent extends Block<MessageFooterProps> {
     private _messageRule = new RegExp(ValidateRules.notEmpty);
 
     constructor(props: MessageFooterProps) {
@@ -23,9 +23,9 @@ export class MessageFooterComponent extends Block {
     protected addEvents() {
         this.setProps({
             events: {
-                submit: e => {
+                submit: (e: SubmitEvent) => {
                     e.preventDefault();
-                    const data = [...new FormData(e.target)];
+                    const data: any[] = [...new FormData(e.target as HTMLFormElement)];
                     const entries = new Map(data);
                     const result = Object.fromEntries(entries);
                     const checkMessage = this._messageRule.test(data[0][1].toString());
@@ -48,7 +48,7 @@ export class MessageFooterComponent extends Block {
         });
     }
 
-    componentDidUpdate(oldProps: unknown, newProps: unknown): boolean {
+    componentDidUpdate(oldProps: MessageFooterProps, newProps: MessageFooterProps): boolean {
         return super.componentDidUpdate(oldProps, newProps);
     }
 

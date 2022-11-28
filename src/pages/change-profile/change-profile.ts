@@ -1,12 +1,18 @@
 import { Block } from '../../utils/Block';
 import template from './change-profile.hbs';
 import backPanel from '../../../static/back-panel.svg';
-import Input from '../../components/input';
+import { Input } from '../../components/input';
 import { ValidateRules } from '../../utils/validateRules';
-import Button from '../../components/button';
-import AvatarChangerComponent from '../../components/avatar-changer';
+import { Button } from '../../components/button';
+import { AvatarChangerComponent } from '../../components/avatar-changer';
 
-export class ChangeProfilePage extends Block {
+type ChangeProfilePageProps = {
+    events?: {
+        click?: () => void;
+    }
+}
+
+export class ChangeProfilePage extends Block<ChangeProfilePageProps> {
     showPopupChanger = false;
     private _emailRule = new RegExp(ValidateRules.email);
     private _loginRule = new RegExp(ValidateRules.login);
@@ -21,9 +27,9 @@ export class ChangeProfilePage extends Block {
     protected addEvents() {
         this.setProps({
             events: {
-                submit: e => {
+                submit: (e: SubmitEvent) => {
                     e.preventDefault();
-                    const data = [...new FormData(e.target)];
+                    const data = [...new FormData(e.target as HTMLFormElement)];
                     const entries = new Map(data);
                     const result = Object.fromEntries(entries);
                     const checkEmail = this._emailRule.test(data[0][1].toString());

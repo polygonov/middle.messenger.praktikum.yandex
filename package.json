@@ -5,33 +5,36 @@
   "scripts": {
     "dev": "parcel ./src/*.html --no-cache",
     "build": "parcel build ./src/*.html",
-    "start": "npm run build && node ./server.ts"
+    "start": "npm run build && node ./server.ts",
+    "eslint": "eslint . ",
+    "stylelint": "npx stylelint **/*.css "
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@anikin/parcel-transformer-handlebars": "^1.0.9",
-    "@anikin/parcel-transformer-handlebars-precompile": "^1.0.1",
-    "@typescript-eslint/eslint-plugin": "^5.42.1",
-    "@typescript-eslint/parser": "^5.42.1",
-    "eslint": "^8.27.0",
-    "eslint-config-standard-with-typescript": "^23.0.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-n": "^15.5.1",
-    "eslint-plugin-promise": "^6.1.1",
-    "handlebars": "^4.7.7",
-    "parcel": "^2.7.0",
-    "postcss": "^8.4.16",
-    "postcss-import": "^15.0.0",
-    "postcss-modules": "^4.3.1",
-    "postcss-nested": "^5.0.6",
-    "ts-node": "^10.9.1",
-    "tslib": "^2.4.1",
-    "typescript": "^4.9.3"
+    "@anikin/parcel-transformer-handlebars": "1.0.9",
+    "@anikin/parcel-transformer-handlebars-precompile": "1.0.1",
+    "@typescript-eslint/eslint-plugin": "5.42.1",
+    "@typescript-eslint/parser": "5.42.1",
+    "eslint": "8.27.0",
+    "eslint-config-standard-with-typescript": "23.0.0",
+    "eslint-plugin-import": "2.26.0",
+    "eslint-plugin-n": "15.5.1",
+    "eslint-plugin-promise": "6.1.1",
+    "handlebars": "4.7.7",
+    "parcel": "2.7.0",
+    "postcss": "8.4.16",
+    "postcss-import": "15.0.0",
+    "postcss-modules": "4.3.1",
+    "postcss-nested": "5.0.6",
+    "stylelint": "14.15.0",
+    "ts-node": "10.9.1",
+    "tslib": "2.4.1",
+    "typescript": "4.8"
   },
   "dependencies": {
-    "express": "^4.18.1",
+    "express": "4.18.1",
     "nanoid": "^4.0.0"
   }
 }
