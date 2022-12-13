@@ -1,6 +1,7 @@
 import { Button } from '../../components/button';
 import { Input } from '../../components/input';
 import { Link } from '../../components/link';
+import { withRouter } from '../../hocs/withRouter';
 import { Block } from '../../utils/Block';
 import { Routes } from '../../utils/Routes';
 import { ValidateRules } from '../../utils/validateRules';
@@ -12,12 +13,12 @@ type LoginPageProps = {
     }
 }
 
-export class LoginPage extends Block<LoginPageProps> {
+class LoginPageBase extends Block<LoginPageProps> {
     private _loginRule = new RegExp(ValidateRules.login);
     private _passwordRule = new RegExp(ValidateRules.password);
 
-    constructor() {
-        super();
+    constructor(props: LoginPageProps) {
+        super({ ...props });
         this.addEvents();
     }
 
@@ -33,6 +34,7 @@ export class LoginPage extends Block<LoginPageProps> {
                     const checkPassword = this._passwordRule.test(data[1][1].toString());
                     if (checkLogin && checkPassword) {
                         console.log(result);
+                        this.props.router.go(Routes.Messenger);
                     }
                 },
             },
@@ -69,3 +71,5 @@ export class LoginPage extends Block<LoginPageProps> {
         return this.compile(template, {});
     }
 }
+
+export const LoginPage = withRouter(LoginPageBase);
