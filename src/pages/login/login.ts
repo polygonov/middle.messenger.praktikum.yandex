@@ -1,6 +1,8 @@
 import { Button } from '../../components/button';
 import { Input } from '../../components/input';
+import { Link } from '../../components/link';
 import { Block } from '../../utils/Block';
+import { Routes } from '../../utils/Routes';
 import { ValidateRules } from '../../utils/validateRules';
 import template from './login.hbs';
 
@@ -51,6 +53,11 @@ export class LoginPage extends Block<LoginPageProps> {
             name: 'password',
             type: 'password',
             pattern: ValidateRules.password,
+        });
+        this.children.linkToRegistration = new Link({
+            label: 'Нет аккаунта?',
+            to: Routes.Registration,
+            className: 'ask',
         });
     }
 

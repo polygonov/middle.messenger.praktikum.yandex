@@ -5,6 +5,8 @@ import { Input } from '../../components/input';
 import { ValidateRules } from '../../utils/validateRules';
 import { Button } from '../../components/button';
 import { AvatarChangerComponent } from '../../components/avatar-changer';
+import { Link } from '../../components/link';
+import { Routes } from '../../utils/Routes';
 
 type ChangeProfilePageProps = {
     events?: {
@@ -85,8 +87,18 @@ export class ChangeProfilePage extends Block<ChangeProfilePageProps> {
             pattern: ValidateRules.phone,
         });
         this.children.button = new Button({
-            label: 'Сохранитьm',
+            label: 'Сохранить',
             type: 'submit',
+        });
+        this.children.linkToProfile = new Link({
+            label: '',
+            to: Routes.Settings,
+            className: 'back-panel',
+            externalTemplate: () => {
+                return `<div class="link back-panel">
+                            <img src="${backPanel}">
+                        </div>`;
+            },
         });
     }
 

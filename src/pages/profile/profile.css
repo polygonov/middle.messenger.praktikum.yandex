@@ -49,6 +49,11 @@
             margin-bottom: 14px;
             color: var(--light-grey);
         }
+
+        .file {
+            cursor: pointer;
+            color:  var(--blue)
+        }
     }    
 }
 

@@ -3,6 +3,8 @@ import { Block } from '../../utils/Block';
 import template from './profile.hbs';
 import backPanel from '../../../static/back-panel.svg';
 import memoji from '../../../static/memoji.png';
+import { Link } from '../../components/link';
+import { Routes } from '../../utils/Routes';
 
 type ProfilePageProps = {
     events?: {
@@ -22,6 +24,26 @@ export class ProfilePage extends Block<ProfilePageProps> {
                     this.setProps({ showPopupChanger: this.showPopupChanger });
                 },
             },
+        });
+        this.children.linkToMessanger = new Link({
+            label: '',
+            to: Routes.Messenger,
+            className: 'back-panel',
+            externalTemplate: () => {
+                return `<div class="link back-panel">
+                            <img src="${backPanel}">
+                        </div>`;
+            },
+        });
+        this.children.linkChangeProfile = new Link({
+            label: 'Изменить данные',
+            to: Routes.ChangeProfile,
+            className: 'changer',
+        });
+        this.children.linkChangePassword = new Link({
+            label: 'Изменить пароль',
+            to: Routes.ChangePassword,
+            className: 'changer',
         });
     }
 

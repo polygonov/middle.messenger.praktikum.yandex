@@ -1,6 +1,8 @@
 import { Button } from '../../components/button';
 import { Input } from '../../components/input';
+import { Link } from '../../components/link';
 import { Block } from '../../utils/Block';
+import { Routes } from '../../utils/Routes';
 import { ValidateRules } from '../../utils/validateRules';
 import template from './registration.hbs';
 
@@ -99,6 +101,11 @@ export class RegistrationPage extends Block<RegistrationPageProps> {
         this.children.button = new Button({
             label: 'Зарегистрироваться',
             type: 'submit',
+        });
+        this.children.linkToLogin = new Link({
+            label: 'Войти',
+            to: Routes.Index,
+            className: 'ask',
         });
     }
 

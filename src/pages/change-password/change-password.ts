@@ -5,6 +5,8 @@ import { Input } from '../../components/input';
 import { ValidateRules } from '../../utils/validateRules';
 import memoji from '../../../static/memoji.png';
 import { Button } from '../../components/button';
+import { Link } from '../../components/link';
+import { Routes } from '../../utils/Routes';
 
 type ChangePasswordPageProps = {
     events?: {
@@ -66,6 +68,16 @@ export class ChangePasswordPage extends Block<ChangePasswordPageProps> {
         this.children.button = new Button({
             label: 'Сохранить',
             type: 'submit',
+        });
+        this.children.linkToProfile = new Link({
+            label: '',
+            to: Routes.Settings,
+            className: 'back-panel',
+            externalTemplate: () => {
+                return `<div class="link back-panel">
+                            <img src="${backPanel}">
+                        </div>`;
+            },
         });
     }
 

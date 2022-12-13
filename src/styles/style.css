@@ -12,4 +12,5 @@
 @import '../components/chat-actions/chat-actions.css';
 @import '../components/message-actions/message-actions.css';
 @import '../components/message-footer/message-footer.css';
+@import '../components/link/link.css';
 @import 'variables.css';
