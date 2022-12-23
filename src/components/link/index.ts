@@ -1,3 +1,4 @@
+import { authController } from '../../controllers/AuthController';
 import { PropsWithRouter, withRouter } from '../../hocs/withRouter';
 import { Block } from '../../utils/Block';
 import template from './link.hbs';
@@ -6,6 +7,7 @@ interface LinkProps extends PropsWithRouter {
     to: string;
     label: string;
     className?: string;
+    shouldLogout?: boolean;
     events?: {
         click: () => void;
     };
@@ -17,7 +19,12 @@ class BaseLink extends Block<LinkProps> {
         super({
             ...props,
             events: {
-                click: () => this.navigate(),
+                click: () => {
+                    this.navigate();
+                    if (props.shouldLogout) {
+                        authController.logout();
+                    }
+                },
             },
         });
     }

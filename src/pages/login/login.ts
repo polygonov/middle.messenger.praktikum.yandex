@@ -1,7 +1,7 @@
 import { Button } from '../../components/button';
 import { Input } from '../../components/input';
 import { Link } from '../../components/link';
-import AuthController from '../../controllers/AuthController';
+import { authController } from '../../controllers/AuthController';
 import { withRouter } from '../../hocs/withRouter';
 import { SigninData } from '../../types/SigninData';
 import { Block } from '../../utils/Block';
@@ -43,7 +43,7 @@ class LoginPageBase extends Block<LoginPageProps> {
         const checkPassword = this._passwordRule.test(data[1][1].toString());
         if (checkLogin && checkPassword) {
             console.log(result);
-            AuthController.signin(result as unknown as SigninData);
+            authController.signin(result as unknown as SigninData);
         }
     }
 

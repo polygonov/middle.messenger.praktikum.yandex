@@ -1,7 +1,7 @@
 import { Button } from '../../components/button';
 import { Input } from '../../components/input';
 import { Link } from '../../components/link';
-import AuthController from '../../controllers/AuthController';
+import { authController } from '../../controllers/AuthController';
 import { SignupData } from '../../types/SignupData';
 import { Block } from '../../utils/Block';
 import { Routes } from '../../utils/Routes';
@@ -57,7 +57,7 @@ export class RegistrationPage extends Block<RegistrationPageProps> {
             checkPasswordAgain
         ) {
             console.log(result);
-            AuthController.signup(result as unknown as SignupData);
+            authController.signup(result as unknown as SignupData);
         }
     }
 

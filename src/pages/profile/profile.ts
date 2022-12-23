@@ -45,6 +45,12 @@ export class ProfilePage extends Block<ProfilePageProps> {
             to: Routes.ChangePassword,
             className: 'changer',
         });
+        this.children.linkExit = new Link({
+            label: 'Выйти',
+            to: Routes.Index,
+            className: 'exit',
+            shouldLogout: true,
+        });
     }
 
     componentDidUpdate(oldProps: unknown, newProps: unknown): boolean {
