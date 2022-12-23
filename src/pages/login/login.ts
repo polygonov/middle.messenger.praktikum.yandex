@@ -1,7 +1,9 @@
 import { Button } from '../../components/button';
 import { Input } from '../../components/input';
 import { Link } from '../../components/link';
+import AuthController from '../../controllers/AuthController';
 import { withRouter } from '../../hocs/withRouter';
+import { SigninData } from '../../types/SigninData';
 import { Block } from '../../utils/Block';
 import { Routes } from '../../utils/Routes';
 import { ValidateRules } from '../../utils/validateRules';
@@ -26,19 +28,23 @@ class LoginPageBase extends Block<LoginPageProps> {
         this.setProps({
             events: {
                 submit: (e: SubmitEvent) => {
-                    e.preventDefault();
-                    const data = [...new FormData(e.target as HTMLFormElement)];
-                    const entries = new Map(data);
-                    const result = Object.fromEntries(entries);
-                    const checkLogin = this._loginRule.test(data[0][1].toString());
-                    const checkPassword = this._passwordRule.test(data[1][1].toString());
-                    if (checkLogin && checkPassword) {
-                        console.log(result);
-                        this.props.router.go(Routes.Messenger);
-                    }
+                    this.onSubmit(e);
                 },
             },
         });
+    }
+
+    private onSubmit(e: SubmitEvent) {
+        e.preventDefault();
+        const data = [...new FormData(e.target as HTMLFormElement)];
+        const entries = new Map(data);
+        const result = Object.fromEntries(entries);
+        const checkLogin = this._loginRule.test(data[0][1].toString());
+        const checkPassword = this._passwordRule.test(data[1][1].toString());
+        if (checkLogin && checkPassword) {
+            console.log(result);
+            AuthController.signin(result as unknown as SigninData);
+        }
     }
 
     protected initChildren(): void {
