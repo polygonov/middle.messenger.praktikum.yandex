@@ -5,6 +5,7 @@ import backPanel from '../../../static/back-panel.svg';
 import memoji from '../../../static/memoji.png';
 import { Link } from '../../components/link';
 import { Routes } from '../../utils/Routes';
+import { withStore } from '../../hocs/withStore';
 
 type ProfilePageProps = {
     events?: {
@@ -12,7 +13,7 @@ type ProfilePageProps = {
     }
 }
 
-export class ProfilePage extends Block<ProfilePageProps> {
+class ProfilePageBase extends Block<ProfilePageProps> {
     showPopupChanger = false;
 
     protected initChildren(): void {
@@ -58,6 +59,9 @@ export class ProfilePage extends Block<ProfilePageProps> {
     }
 
     protected render(): DocumentFragment {
-        return this.compile(template, { backPanel, memoji });
+        return this.compile(template, { backPanel, memoji, ...this.props });
     }
 }
+
+const withUser = withStore((state: any) => state.user);
+export const ProfilePage = withUser(ProfilePageBase);
