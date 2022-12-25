@@ -4,17 +4,20 @@
     <div class="popup-background">
         <div class="popup-changer">
             <div>Загрузите файл</div>
-            <div class="file">Выбрать файл на компьютере</div>
-            <button class="btn">Поменять</button>
+            <label class="file" for="file-upload" class="custom-file-upload">
+                {{{ changeAvatarText }}}
+            </label>
+            {{{ inputFile }}}
+            {{{ buttonChangeAvatar }}}
         </div>
     </div>
     {{/if}}
 
     <div class="profile-page">
-        <form class="form">
+        <form id="prof-form" class="form">
             <div class="content">
                 {{{ avatarChanger }}}
-                <div class="name">Игорь</div>
+                <div class="name">{{ first_name }}</div>
 
                 <div class="inputs">
                     <div class="field">
@@ -39,7 +42,7 @@
                     </div>
                 </div>
 
-                <button class="btn">Сохранить</button>
+                {{{ button }}}
             </div>
         </form>
     </div>

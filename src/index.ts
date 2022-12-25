@@ -12,7 +12,7 @@ import { Block } from './utils/Block';
 import { router } from './utils/Router';
 import { Routes } from './utils/Routes';
 
-window.addEventListener('DOMContentLoaded', async () => {
+window.addEventListener('DOMContentLoaded', async() => {
     router
         .use(Routes.Index, LoginPage as unknown as Block<{}>)
         .use(Routes.Registration, RegistrationPage as unknown as Block<{}>)

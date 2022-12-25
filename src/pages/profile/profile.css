@@ -39,6 +39,9 @@
         justify-content: space-between;
         align-items: center;
         color: var(--light-grey);
+        input[type="file"] {
+            display: none;
+        }
 
         .btn {
             background: var(--blue);
@@ -81,6 +84,13 @@
             color: var(--light-grey);
             align-items: center;
             margin-top: 60px;
+
+            .image {
+                object-fit: cover;
+                width: 130px;
+                height: 130px;
+                border-radius: 50%;
+            }
 
             .name {
                 color: var(--blue);

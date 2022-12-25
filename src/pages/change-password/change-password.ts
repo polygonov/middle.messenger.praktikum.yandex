@@ -7,6 +7,8 @@ import memoji from '../../../static/memoji.png';
 import { Button } from '../../components/button';
 import { Link } from '../../components/link';
 import { Routes } from '../../utils/Routes';
+import { userController } from '../../controllers/UserController';
+import { NewPassword } from '../../types/NewPassword';
 
 type ChangePasswordPageProps = {
     events?: {
@@ -35,6 +37,7 @@ export class ChangePasswordPage extends Block<ChangePasswordPageProps> {
                     const checkPasswordAgain = data[1][1].toString() === data[2][1].toString();
                     if (checkOldPassword && checkPassword && checkPasswordAgain) {
                         console.log(result);
+                        userController.changePassword(result as unknown as NewPassword);
                     }
                 },
             },
@@ -43,12 +46,12 @@ export class ChangePasswordPage extends Block<ChangePasswordPageProps> {
 
     protected initChildren(): void {
         this.children.inputOldPassword = new Input({
-            name: 'old_password',
+            name: 'oldPassword',
             type: 'password',
             pattern: ValidateRules.password,
         });
         this.children.inputPassword = new Input({
-            name: 'password',
+            name: 'newPassword',
             type: 'password',
             pattern: ValidateRules.password,
             events: {

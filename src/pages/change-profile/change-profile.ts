@@ -7,6 +7,10 @@ import { Button } from '../../components/button';
 import { AvatarChangerComponent } from '../../components/avatar-changer';
 import { Link } from '../../components/link';
 import { Routes } from '../../utils/Routes';
+import { Profile } from '../../types/Profile';
+import { userController } from '../../controllers/UserController';
+import { withStore } from '../../hocs/withStore';
+import { AvatarInput } from '../../components/avatar-input';
 
 type ChangeProfilePageProps = {
     events?: {
@@ -14,15 +18,16 @@ type ChangeProfilePageProps = {
     }
 }
 
-export class ChangeProfilePage extends Block<ChangeProfilePageProps> {
+export class ChangeProfilePageBase extends Block<ChangeProfilePageProps> {
     showPopupChanger = false;
+    changeAvatarText = 'Выбрать файл на компьютере';
     private _emailRule = new RegExp(ValidateRules.email);
     private _loginRule = new RegExp(ValidateRules.login);
     private _nameRule = new RegExp(ValidateRules.name);
     private _phoneRule = new RegExp(ValidateRules.phone);
 
-    constructor() {
-        super();
+    constructor(props: ChangeProfilePageProps) {
+        super(props);
         this.addEvents();
     }
 
@@ -30,34 +35,43 @@ export class ChangeProfilePage extends Block<ChangeProfilePageProps> {
         this.setProps({
             events: {
                 submit: (e: SubmitEvent) => {
-                    e.preventDefault();
-                    const data = [...new FormData(e.target as HTMLFormElement)];
-                    const entries = new Map(data);
-                    const result = Object.fromEntries(entries);
-                    const checkEmail = this._emailRule.test(data[0][1].toString());
-                    const checkLogin = this._loginRule.test(data[1][1].toString());
-                    const checkFirstName = this._nameRule.test(data[2][1].toString());
-                    const checkSecondName = this._nameRule.test(data[3][1].toString());
-                    const checkPhone = this._phoneRule.test(data[4][1].toString());
-                    if (checkEmail &&
-                        checkLogin &&
-                        checkFirstName &&
-                        checkSecondName &&
-                        checkPhone
-                    ) {
-                        console.log(result);
-                    }
+                    this.submit(e);
                 },
             },
         });
     }
 
+    private submit(e: SubmitEvent) {
+        e.preventDefault();
+        const data = [...new FormData(e.target as HTMLFormElement)];
+        const entries = new Map(data);
+        const result = Object.fromEntries(entries);
+        const checkEmail = this._emailRule.test(data[0][1].toString());
+        const checkLogin = this._loginRule.test(data[1][1].toString());
+        const checkFirstName = this._nameRule.test(data[2][1].toString());
+        const checkSecondName = this._nameRule.test(data[3][1].toString());
+        const checkPhone = this._phoneRule.test(data[4][1].toString());
+        if (checkEmail &&
+            checkLogin &&
+            checkFirstName &&
+            checkSecondName &&
+            checkPhone
+        ) {
+            result.display_name = '';
+            console.log(result);
+            userController.updateProfile(result as unknown as Profile);
+        }
+    }
+
     protected initChildren(): void {
+        let inputFileElement: HTMLInputElement | undefined;
         this.children.avatarChanger = new AvatarChangerComponent({
             events: {
                 click: () => {
                     this.showPopupChanger = true;
                     this.setProps({ showPopupChanger: this.showPopupChanger });
+                    this.changeAvatarText = 'Выбрать файл на компьютере';
+                    this.setProps({ changeAvatarText: this.changeAvatarText });
                 },
             },
         });
@@ -100,6 +114,32 @@ export class ChangeProfilePage extends Block<ChangeProfilePageProps> {
                         </div>`;
             },
         });
+        this.children.inputFile = new AvatarInput({
+            id: 'file-upload',
+            name: 'avatar',
+            type: 'file',
+            events: {
+                input: () => {
+                    inputFileElement = <HTMLInputElement> this.children.inputFile.element;
+                    this.changeAvatarText = 'Файл выбран';
+                    this.setProps({ changeAvatarText: this.changeAvatarText });
+                },
+            },
+        });
+        this.children.buttonChangeAvatar = new Button({
+            label: 'Поменять',
+            className: 'btn',
+            events: {
+                click: () => {
+                    const file: File = inputFileElement!.files![0];
+                    const formData = new FormData();
+                    formData.append('avatar', file);
+                    userController.changeAvatar(formData);
+                    this.showPopupChanger = false;
+                    this.setProps({ showPopupChanger: this.showPopupChanger });
+                },
+            },
+        });
     }
 
     componentDidUpdate(oldProps: unknown, newProps: unknown): boolean {
@@ -107,6 +147,17 @@ export class ChangeProfilePage extends Block<ChangeProfilePageProps> {
     }
 
     protected render(): DocumentFragment {
-        return this.compile(template, { backPanel, showPopupChanger: this.showPopupChanger });
+        return this.compile(
+            template,
+            {
+                backPanel,
+                showPopupChanger: this.showPopupChanger,
+                changeAvatarText: this.changeAvatarText,
+                ...this.props,
+            },
+        );
     }
 }
+
+const withUser = withStore((state: any) => state.user);
+export const ChangeProfilePage = withUser(ChangeProfilePageBase);
