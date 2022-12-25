@@ -8,6 +8,7 @@
 
     &:hover {
         background: var(--dark-blue);
-        opacity: 0.3;
+        opacity: 0.2;
+        cursor: pointer;
     }
 }

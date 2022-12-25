@@ -1,3 +1,5 @@
-<div class="avatar-changer">
-    <img src="{{ memoji }}">
+<div class="avatar-changer" style="background-image: url({{ memoji }});">
+    {{#if avatar}}
+    <img class="image" src="{{sourceLink}}{{ avatar }}">
+    {{/if}}
 </div>

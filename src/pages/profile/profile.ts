@@ -6,6 +6,7 @@ import memoji from '../../../static/memoji.png';
 import { Link } from '../../components/link';
 import { Routes } from '../../utils/Routes';
 import { withStore } from '../../hocs/withStore';
+import { sourceLink } from '../../utils/sourceLink';
 
 type ProfilePageProps = {
     events?: {
@@ -37,7 +38,7 @@ class ProfilePageBase extends Block<ProfilePageProps> {
             },
         });
         this.children.linkChangeProfile = new Link({
-            label: 'Изменить данные',
+            label: 'Изменить профиль',
             to: Routes.ChangeProfile,
             className: 'changer',
         });
@@ -59,7 +60,7 @@ class ProfilePageBase extends Block<ProfilePageProps> {
     }
 
     protected render(): DocumentFragment {
-        return this.compile(template, { backPanel, memoji, ...this.props });
+        return this.compile(template, { backPanel, memoji, sourceLink, ...this.props });
     }
 }
 
