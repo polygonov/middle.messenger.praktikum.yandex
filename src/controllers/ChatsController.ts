@@ -13,7 +13,7 @@ export class ChatsController {
 
     async fetchChats() {
         const chats: Chat[] = await this.api.read();
-        store.set('chats.chats', chats);
+        store.set('chats', chats);
     }
 
     setSelectedChatId(chatId: string) {

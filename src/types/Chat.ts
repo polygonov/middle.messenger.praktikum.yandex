@@ -1,5 +1,5 @@
 export type Chat = {
-    id: 123;
+    id: number;
     title: string;
     avatar: string;
     unread_count: number;

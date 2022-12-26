@@ -1,0 +1,19 @@
+<div class="chat-preview">
+    <img class="avatar" src="{{ avatar }}" style="background-image: url({{ avatar1 }});">
+    <div class="info">
+        <div class="chat-name">
+            {{ title }}
+        </div>
+        <div class="last-message">
+            {{ content }}
+        </div>
+    </div>
+    <div class="message-status">
+        <div class="message-time">{{ time }}</div>
+        <div class="message-lenght hidden">
+            {{#if count}}
+            <div class="lenght-value">{{ count }}</div>
+            {{/if}}
+        </div>
+    </div>
+</div>

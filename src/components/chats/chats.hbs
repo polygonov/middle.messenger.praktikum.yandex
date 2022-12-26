@@ -1,21 +1,7 @@
 <div>
     {{#each chats}}
-    <div class="chat-preview">
-        <img class="avatar" src="{{ ../avatar3 }}">
-        <div class="info">
-            <div class="chat-name">
-                {{ title }}
-            </div>
-            <div class="last-message">
-                {{ last_message.content }}
-            </div>
-        </div>
-        <div class="message-status">
-            <div class="message-time">{{ last_message.time }}</div>
-            <div class="message-lenght hidden">
-                <div class="lenght-value">{{ unread_count }}</div>
-            </div>
-        </div>
-    </div>
+        {{{this}}}
     {{/each}}
+    {{{ button }}}
+    {{{ chatView }}}
 </div>
