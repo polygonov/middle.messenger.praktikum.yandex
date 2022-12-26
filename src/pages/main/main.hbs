@@ -19,7 +19,13 @@
             {{{ messageFooter }}}
         {{else}}
         <div class="not-selected">
-            <div>Выберите чат, чтобы отправить сообщение</div>
+            <div>Выберите чат, чтобы отправить сообщение или создайте новый</div>
+            <div class="create-chat">
+                <div class="chat-search">
+                    {{{ inputChatName }}}
+                </div>
+                {{{ button }}}
+            </div>
         </div>
         {{/if}}
 

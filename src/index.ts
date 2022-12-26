@@ -1,4 +1,5 @@
 import { authController } from './controllers/AuthController';
+import { chatsController } from './controllers/ChatsController';
 import './index.css';
 import { ChangePasswordPage } from './pages/change-password';
 import { ChangeProfilePage } from './pages/change-profile';
@@ -31,6 +32,7 @@ window.addEventListener('DOMContentLoaded', async() => {
     }
     try {
         await authController.fetchUser();
+        await chatsController.fetchChats();
         router.start();
         if (!isProtectedRoute) {
             router.go(Routes.Messenger);
