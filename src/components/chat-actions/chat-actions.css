@@ -1,27 +1,13 @@
-.chat-actions {
-
-    position: absolute;
-    margin-top: 10px;
-    width: 210px;
-    height: 98px;
-    background: var(--dark-brown);
-    border-radius: 12px;
-    right: 10px;
-    font-size: 12px;  
+.chat-tools {
     display: flex;
-    flex-flow: column;
-    justify-content: space-between;
-    padding: 0px;
-    padding-top: 15px;
-    padding-bottom: 15px;
-
-    .item { 
-        margin-left: 15px;
-        display: flex;
-        align-items: center;
-    }
-
-    .icon {
-        margin-right: 14px;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 50px;
+    border-radius: 50%;
+    &:hover {
+        background: var(--dark-blue);
+        opacity: 0.2;
+        cursor: pointer;
     }
 }

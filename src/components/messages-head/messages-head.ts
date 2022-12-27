@@ -5,6 +5,9 @@ import chatTools from '../../../static/chat-tools.svg';
 import { withStore } from '../../hocs/withStore';
 import { Chat } from '../../types/Chat';
 import { sourceLink } from '../../utils/sourceLink';
+import icnDeleteChat from '../../../static/icn_delete_chat.svg';
+import { ChatActionsComponent } from '../chat-actions';
+import { chatsController } from '../../controllers/ChatsController';
 
 type MessagesHeadProps = {
     events?: {
@@ -19,6 +22,13 @@ export class MessagesHeadComponentBase extends Block<MessagesHeadProps> {
     }
 
     protected initChildren(): void {
+        this.children.chatActionsComponent = new ChatActionsComponent({
+            events: {
+                click: () => {
+                    chatsController.deleteChat(this.props.selectedChatId);
+                },
+            },
+        });
     }
 
     componentDidUpdate(oldProps: MessagesHeadProps, newProps: MessagesHeadProps): boolean {
@@ -33,6 +43,7 @@ export class MessagesHeadComponentBase extends Block<MessagesHeadProps> {
         return this.compile(template,
             {
                 avatar,
+                icnDeleteChat,
                 chatTools,
                 ...this.props,
                 sourceLink,

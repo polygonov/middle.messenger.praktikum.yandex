@@ -11,6 +11,12 @@ export class ChatsController {
         this.fetchChats();
     }
 
+    async deleteChat(chatId: number) {
+        await this.api.delete(chatId);
+        this.setSelectedChatId(null);
+        this.fetchChats();
+    }
+
     async fetchChats() {
         const chats: Chat[] = await this.api.read();
         store.set('chats', chats);

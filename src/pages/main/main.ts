@@ -1,5 +1,4 @@
 import { Button } from '../../components/button';
-import { ChatActionsComponent } from '../../components/chat-actions';
 import { ChatsComponent } from '../../components/chats';
 import { ChatsHeadComponent } from '../../components/chats-head';
 import { Input } from '../../components/input';
@@ -43,7 +42,6 @@ class MainPageBase extends Block<MainPageProps> {
         });
         this.children.chats = new ChatsComponent({});
         this.children.messagesHead = new MessagesHeadComponent({});
-        this.children.chatActions = new ChatActionsComponent({});
         this.children.messages = new MessagesComponent({});
         this.children.messageAction = new MessageActionsComponent({});
         this.children.messageFooter = new MessageFooterComponent({});

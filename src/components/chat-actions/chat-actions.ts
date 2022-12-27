@@ -1,7 +1,5 @@
 import { Block } from '../../utils/Block';
 import template from './chat-actions.hbs';
-import icnAddUser from '../../../static/icn_add_user.svg';
-import icnDeleteUser from '../../../static/icn_delete_user.svg';
 import icnDeleteChat from '../../../static/icn_delete_chat.svg';
 
 type ChatActionsProps = {
@@ -23,6 +21,6 @@ export class ChatActionsComponent extends Block<ChatActionsProps> {
     }
 
     protected render(): DocumentFragment {
-        return this.compile(template, { icnAddUser, icnDeleteUser, icnDeleteChat });
+        return this.compile(template, { icnDeleteChat });
     }
 }
