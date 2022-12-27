@@ -20,6 +20,10 @@ export class UserController {
         await this.api.changeAvatar(data);
         await authController.fetchUser();
     }
+
+    async searchUser(login: string) {
+        return await this.api.searchUser(login);
+    }
 }
 
 export const userController = new UserController();

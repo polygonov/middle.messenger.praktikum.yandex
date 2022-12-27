@@ -1,6 +1,6 @@
 import { Block } from '../../utils/Block';
 import template from './messages-head.hbs';
-import avatar from '../../../static/avatar1.png';
+import avatar from '../../../static/avatar3.png';
 import chatTools from '../../../static/chat-tools.svg';
 import { withStore } from '../../hocs/withStore';
 import { Chat } from '../../types/Chat';

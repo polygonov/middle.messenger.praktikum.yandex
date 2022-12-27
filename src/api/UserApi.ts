@@ -1,5 +1,6 @@
 import { NewPassword } from '../types/NewPassword';
 import { Profile } from '../types/Profile';
+import { User } from '../types/User';
 import { BaseAPI } from './BaseAPI';
 
 export class UserAPI extends BaseAPI {
@@ -17,6 +18,10 @@ export class UserAPI extends BaseAPI {
 
     changeAvatar(data: FormData) {
         return this.http.put('/profile/avatar', data);
+    }
+
+    searchUser(login: string): Promise<User[]> {
+        return this.http.post('/search', { login });
     }
 
     create = undefined;

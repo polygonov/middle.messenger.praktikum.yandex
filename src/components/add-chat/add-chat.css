@@ -1,0 +1,13 @@
+.chat-tools {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 50px;
+    border-radius: 50%;
+    &:hover {
+        background: var(--dark-blue);
+        opacity: 0.2;
+        cursor: pointer;
+    }
+}

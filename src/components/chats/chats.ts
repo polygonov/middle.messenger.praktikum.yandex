@@ -1,6 +1,6 @@
 import { Block } from '../../utils/Block';
 import template from './chats.hbs';
-import defAvatar from '../../../static/avatar1.png';
+import defAvatar from '../../../static/avatar3.png';
 import { withStore } from '../../hocs/withStore';
 import { Chat } from '../../types/Chat';
 import { ChatPreview } from '../chat-preview.ts';

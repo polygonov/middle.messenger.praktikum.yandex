@@ -7,7 +7,9 @@ import { MessageFooterComponent } from '../../components/message-footer';
 import { MessagesComponent } from '../../components/messages';
 import { MessagesHeadComponent } from '../../components/messages-head';
 import { chatsController } from '../../controllers/ChatsController';
+import { userController } from '../../controllers/UserController';
 import { withStore } from '../../hocs/withStore';
+import { Chat } from '../../types/Chat';
 import { Block } from '../../utils/Block';
 import { ValidateRules } from '../../utils/validateRules';
 import template from './main.hbs';
@@ -21,38 +23,33 @@ class MainPageBase extends Block<MainPageProps> {
     showChats = true;
     constructor(props: MainPageProps) {
         super(props);
+        chatsController.fetchChats();
     }
 
     protected checkProps() {
         if (this.props.selectedChatId) {
             this.showChats = true;
+        } else {
+            this.showChats = false;
         }
     }
 
     protected initChildren(): void {
         let inputNewChatNameEl: HTMLInputElement | undefined;
-        this.children.chatsHead = new ChatsHeadComponent({
-            events: {
-                click: () => {
-                    this.showChats = false;
-                    chatsController.setSelectedChatId(null);
-                    this.setProps({ showChats: this.showChats });
-                },
-            },
-        });
+        this.children.chatsHead = new ChatsHeadComponent({});
         this.children.chats = new ChatsComponent({});
         this.children.messagesHead = new MessagesHeadComponent({});
         this.children.messages = new MessagesComponent({});
         this.children.messageAction = new MessageActionsComponent({});
         this.children.messageFooter = new MessageFooterComponent({});
-        this.children.inputChatName = new Input({
+        this.children.inputConnectName = new Input({
             name: 'passwordCheck',
             type: 'text',
-            placeholder: 'Введите название чата',
-            pattern: ValidateRules.notEmpty,
+            placeholder: 'Введите логин для связи',
+            pattern: ValidateRules.login,
             events: {
                 input: () => {
-                    inputNewChatNameEl = <HTMLInputElement> this.children.inputChatName.element;
+                    inputNewChatNameEl = <HTMLInputElement> this.children.inputConnectName.element;
                 },
             },
         });
@@ -61,13 +58,25 @@ class MainPageBase extends Block<MainPageProps> {
             type: 'submit',
             events: {
                 click: () => {
-                    const title = inputNewChatNameEl!.value;
-                    if (title.length > 0) {
-                        chatsController.createChat({ title });
-                    }
+                    this.createNewChatWithOneUser(inputNewChatNameEl);
                 },
             },
         });
+    }
+
+    private async createNewChatWithOneUser(inputNewChatNameEl: HTMLInputElement | undefined) {
+        const login = inputNewChatNameEl!.value;
+        if (login.length > 0) {
+            const users = await userController.searchUser(login);
+            const newChatName =
+                this.props.user.first_name + ' и ' + users[0].first_name;
+            await chatsController.createChat({ title: newChatName });
+            const newChat: Chat = this.props.chats[0];
+            await chatsController.addNewUsersToChat({
+                users: [users[0].id],
+                chatId: newChat.id,
+            });
+        }
     }
 
     componentDidUpdate(oldProps: unknown, newProps: unknown): boolean {
@@ -80,5 +89,6 @@ class MainPageBase extends Block<MainPageProps> {
     }
 }
 
-const withSelectedChatId = withStore((state: any) => ({ selectedChatId: state.selectedChatId }));
-export const MainPage = withSelectedChatId(MainPageBase);
+const withChats = withStore((state: any) =>
+    ({ user: state.user, selectedChatId: state.selectedChatId, chats: [...(state.chats || [])] }));
+export const MainPage = withChats(MainPageBase);
