@@ -16,8 +16,8 @@ export class ChatsController {
         store.set('chats', chats);
     }
 
-    setSelectedChatId(chatId: string) {
-        store.set('chats.selectedChatId', chatId);
+    setSelectedChatId(chatId: number | null) {
+        store.set('selectedChatId', chatId);
     }
 }
 

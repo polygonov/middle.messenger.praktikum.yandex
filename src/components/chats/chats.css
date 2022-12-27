@@ -5,6 +5,11 @@
     display: grid;
     grid-template-columns: 67 auto 50;
 
+    &:hover {
+        background: var(--selected-dark);
+        cursor: pointer;
+    }
+
     .avatar {
         border-radius: 50%;
         width: 47px;

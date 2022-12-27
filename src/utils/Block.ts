@@ -146,10 +146,6 @@ export abstract class Block<Props extends {}> {
         });
     }
 
-    private _createDocumentElement(tagName: string): HTMLElement {
-        return document.createElement(tagName);
-    }
-
     show() {
         const content = this.getContent();
         if (!content) { return; }
@@ -162,20 +158,43 @@ export abstract class Block<Props extends {}> {
         content.style.display = 'none';
     }
 
-    compile(template: (context: Props) => string, context: any) {
-        const fragment = this._createDocumentElement('template') as HTMLTemplateElement;
-        Object.entries(this.children).forEach(([key, child]) => {
-            context[key] = `<div data-id="id-${child.id}"></div>`;
+    protected compile(template: (context: any) => string, context: any) {
+        const contextAndStubs = { ...context };
+
+        Object.entries(this.children).forEach(([name, component]) => {
+            if (Array.isArray(component)) {
+                contextAndStubs[name] = component.map(child => `<div data-id="${child.id}"></div>`);
+            } else {
+                contextAndStubs[name] = `<div data-id="${component.id}"></div>`;
+            }
         });
-        const htmlString = template(context);
-        fragment.innerHTML = htmlString;
-        Object.entries(this.children).forEach(([, child]) => {
-            const stub = fragment.content.querySelector(`[data-id="id-${child.id}"]`);
+
+        const html = template(contextAndStubs);
+
+        const temp = document.createElement('template');
+
+        temp.innerHTML = html;
+
+        const replaceStub = (component: Block<Props>) => {
+            const stub = temp.content.querySelector(`[data-id="${component.id}"]`);
+
             if (!stub) {
                 return;
             }
-            stub.replaceWith(child.getContent()!);
+
+            component.getContent()?.append(...Array.from(stub.childNodes));
+
+            stub.replaceWith(component.getContent()!);
+        };
+
+        Object.entries(this.children).forEach(([, component]) => {
+            if (Array.isArray(component)) {
+                component.forEach(replaceStub);
+            } else {
+                replaceStub(component);
+            }
         });
-        return fragment.content;
+
+        return temp.content;
     }
 }

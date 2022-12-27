@@ -1,9 +1,13 @@
 <div class="messages-head">
     <div class="message-head-left-block">
-        <img class="avatar" src="{{avatar2}}">
-        <div>Веган-кафе "Фрик"</div>
+        {{#if actualChat.avatar}}
+        <img class="avatar" src="{{ sourceLink }}{{ actualChat.avatar }}">
+        {{else}}
+        <img class="avatar" src="{{ avatar }}">
+        {{/if}}
+        <div>{{ actualChat.title }}</div>
     </div>
     <div class="chat-tools">
-        <img src="{{chatTools}}">
+        <img src="{{ chatTools }}">
     </div>
 </div>

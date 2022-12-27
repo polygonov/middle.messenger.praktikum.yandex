@@ -1,11 +1,11 @@
 import { Block } from '../../utils/Block';
 import template from './chats.hbs';
-import avatar1 from '../../../static/avatar1.png';
-import avatar2 from '../../../static/avatar2.png';
-import avatar3 from '../../../static/avatar3.png';
+import defAvatar from '../../../static/avatar1.png';
 import { withStore } from '../../hocs/withStore';
 import { Chat } from '../../types/Chat';
 import { ChatPreview } from '../chat-preview.ts';
+import { sourceLink } from '../../utils/sourceLink';
+import { chatsController } from '../../controllers/ChatsController';
 
 type ChatsProps = {
     chats: Chat[];
@@ -21,15 +21,6 @@ class ChatsComponentBase extends Block<ChatsProps> {
 
     protected initChildren(): void {
         this.children.chats = this.createChatsViews(this.props) as unknown as Block<ChatsProps>;
-        console.log('chats>>>', this.children.chats);
-        const data = this.props.chats[0];
-        this.children.chatView = new ChatPreview({
-            ...data,
-            events: {
-                click: () => {},
-            },
-        }) as unknown as Block<ChatsProps>;
-        console.log('single chatView>>>', this.children.chatView);
     }
 
     componentDidUpdate(_oldProps: ChatsProps, newProps: ChatsProps): boolean {
@@ -39,15 +30,19 @@ class ChatsComponentBase extends Block<ChatsProps> {
 
     private createChatsViews(props: ChatsProps) {
         return props.chats.map(data => {
+            const date = new Date(data.last_message?.time);
+            const avatar = data.avatar;
             return new ChatPreview({
                 id: data.id,
-                avatar: data.avatar || '',
+                avatar: avatar ? sourceLink + avatar : defAvatar,
                 title: data.title || '',
                 content: data.last_message?.content || '',
-                time: data.last_message?.time || '',
+                time: data.last_message?.time ? date.getHours() + ':' + date.getMinutes() : '',
                 count: data.unread_count || 0,
                 events: {
-                    click: () => {},
+                    click: () => {
+                        chatsController.setSelectedChatId(data.id);
+                    },
                 },
             });
         });
@@ -55,7 +50,7 @@ class ChatsComponentBase extends Block<ChatsProps> {
 
     protected render(): DocumentFragment {
         const chats = this.props.chats;
-        return this.compile(template, { avatar1, avatar2, avatar3, chats, ...this.props });
+        return this.compile(template, { defAvatar, chats, ...this.props });
     }
 }
 

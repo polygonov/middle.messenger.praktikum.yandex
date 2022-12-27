@@ -8,6 +8,7 @@ import { MessageFooterComponent } from '../../components/message-footer';
 import { MessagesComponent } from '../../components/messages';
 import { MessagesHeadComponent } from '../../components/messages-head';
 import { chatsController } from '../../controllers/ChatsController';
+import { withStore } from '../../hocs/withStore';
 import { Block } from '../../utils/Block';
 import { ValidateRules } from '../../utils/validateRules';
 import template from './main.hbs';
@@ -17,21 +18,30 @@ type MainPageProps = {
         click?: () => void;
     }
 }
-
-export class MainPage extends Block<MainPageProps> {
+class MainPageBase extends Block<MainPageProps> {
     showChats = true;
+    constructor(props: MainPageProps) {
+        super(props);
+    }
+
+    protected checkProps() {
+        if (this.props.selectedChatId) {
+            this.showChats = true;
+        }
+    }
 
     protected initChildren(): void {
         let inputNewChatNameEl: HTMLInputElement | undefined;
-        this.children.chatsHead = new ChatsHeadComponent({});
-        this.children.chats = new ChatsComponent({
+        this.children.chatsHead = new ChatsHeadComponent({
             events: {
                 click: () => {
-                    this.showChats = !this.showChats;
+                    this.showChats = false;
+                    chatsController.setSelectedChatId(null);
                     this.setProps({ showChats: this.showChats });
                 },
             },
         });
+        this.children.chats = new ChatsComponent({});
         this.children.messagesHead = new MessagesHeadComponent({});
         this.children.chatActions = new ChatActionsComponent({});
         this.children.messages = new MessagesComponent({});
@@ -63,10 +73,14 @@ export class MainPage extends Block<MainPageProps> {
     }
 
     componentDidUpdate(oldProps: unknown, newProps: unknown): boolean {
+        this.checkProps();
         return super.componentDidUpdate(oldProps, newProps);
     }
 
     protected render(): DocumentFragment {
-        return this.compile(template, { showChats: this.showChats });
+        return this.compile(template, { showChats: this.showChats, ...this.props });
     }
 }
+
+const withSelectedChatId = withStore((state: any) => ({ selectedChatId: state.selectedChatId }));
+export const MainPage = withSelectedChatId(MainPageBase);
