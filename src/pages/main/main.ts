@@ -23,11 +23,10 @@ type MainPageProps = {
 class MainPageBase extends Block<MainPageProps> {
     showChats = true;
     inputFileElement: HTMLInputElement | undefined;
-    changeAvatarText = 'Выберите аватар вашего чата на компьютере';
+    changeAvatarText = 'Выберите аватар вашего чата на компьютере (не обязательно)';
     constructor(props: MainPageProps) {
         super(props);
         chatsController.fetchChats();
-        this.addEvents();
     }
 
     protected checkProps() {
@@ -72,22 +71,27 @@ class MainPageBase extends Block<MainPageProps> {
         });
         this.children.button = new Button({
             label: 'Создать чат',
-            type: 'submit',
-        });
-    }
-
-    protected addEvents() {
-        this.setProps({
+            type: 'button',
             events: {
-                submit: async(e: SubmitEvent) => {
-                    e.preventDefault();
-                    const data = [...new FormData(e.target as HTMLFormElement)];
-                    const users = await userController.searchUser(data[1][1].toString());
+                click: async() => {
+                    const inputConnectName =
+                        <HTMLInputElement> this.children.inputConnectName.element;
+                    if (!inputConnectName.value) {
+                        await chatsController.fetchChats();
+                        return;
+                    }
+                    const users = await userController.searchUser(inputConnectName.value);
                     if (users.length === 0) {
                         alert('Такой пользователь не найден');
                         return;
                     }
-                    await chatsController.createChat({ title: data[0][1].toString() });
+                    const inputChatName =
+                        <HTMLInputElement> this.children.inputChatName.element;
+                    if (!inputChatName.value) {
+                        await chatsController.fetchChats();
+                        return;
+                    }
+                    await chatsController.createChat({ title: inputChatName.value });
                     const newChat: Chat = this.props.chats[0];
                     await chatsController.addNewUsersToChat({
                         users: [this.props.user.id, users[0].id],
@@ -103,6 +107,13 @@ class MainPageBase extends Block<MainPageProps> {
                     formData.append('avatar', file);
                     await chatsController.changeAvatar(formData);
                     await chatsController.fetchChats();
+                    inputConnectName.value = '';
+                    inputChatName.value = '';
+                    const inputFile = <HTMLInputElement> this.children.inputFile.element;
+                    inputFile.value = '';
+                    this.changeAvatarText =
+                        'Выберите аватар вашего чата на компьютере (не обязательно)';
+                    this.setProps({ changeAvatarText: this.changeAvatarText });
                 },
             },
         });

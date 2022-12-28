@@ -32,11 +32,16 @@ class ChatsComponentBase extends Block<ChatsProps> {
         return props.chats.map(data => {
             const date = new Date(data.last_message?.time);
             const avatar = data.avatar;
+            const content = data.last_message?.content;
+            let showContent = '';
+            if (content) {
+                showContent = content.length > 50 ? content.substring(0, 50) + '...' : content;
+            }
             return new ChatPreview({
                 id: data.id,
                 avatar: avatar ? sourceLink + avatar : defAvatar,
                 title: data.title || '',
-                content: data.last_message?.content || '',
+                content: showContent,
                 time: data.last_message?.time ? date.getHours() + ':' + date.getMinutes() : '',
                 count: data.unread_count || 0,
                 events: {

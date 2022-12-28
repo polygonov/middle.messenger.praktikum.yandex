@@ -8,7 +8,7 @@ type InputProps = {
     placeholder?: string;
     events?: {
         click?: () => void;
-        input?: () => void;
+        input?: (e?: any) => void;
     }
 }
 

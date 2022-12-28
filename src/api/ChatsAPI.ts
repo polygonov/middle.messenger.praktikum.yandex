@@ -37,4 +37,9 @@ export class ChatsAPI extends BaseAPI {
     getChatUsers(chatId: number): Promise<Role[]> {
         return this.http.get(`/${chatId}/users`);
     }
+
+    async getToken(id: number): Promise<string> {
+        const response = await this.http.post<{ token: string }>(`/token/${id}`);
+        return response.token;
+    }
 }

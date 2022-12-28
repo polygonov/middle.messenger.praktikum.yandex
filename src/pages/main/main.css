@@ -78,7 +78,7 @@
                             cursor: pointer;
                             color:  var(--blue);
                             font-size: 14px;
-                            margin: 5px;
+                            /* margin: 5px; */
                             outline: none;
                         }
 
