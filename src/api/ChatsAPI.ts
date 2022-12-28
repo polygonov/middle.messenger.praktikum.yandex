@@ -2,6 +2,7 @@ import { Chat } from '../types/Chat';
 import { DeletedChat } from '../types/DeletedChat';
 import { NewChat } from '../types/NewChat';
 import { NewUsersToChat } from '../types/NewUsersToChat';
+import { Role } from '../types/Role';
 import { BaseAPI } from './BaseAPI';
 
 export class ChatsAPI extends BaseAPI {
@@ -26,7 +27,14 @@ export class ChatsAPI extends BaseAPI {
     }
 
     changeAvatar(data: FormData): Promise<Chat> {
-        console.log('try to change chat avatar', data);
         return this.http.put('/avatar', data);
+    }
+
+    getCommon(chatId: number): Promise<Chat[]> {
+        return this.http.get(`/${chatId}/common`);
+    }
+
+    getChatUsers(chatId: number): Promise<Role[]> {
+        return this.http.get(`/${chatId}/users`);
     }
 }

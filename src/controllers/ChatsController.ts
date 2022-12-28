@@ -2,6 +2,7 @@ import { ChatsAPI } from '../api/ChatsAPI';
 import { Chat } from '../types/Chat';
 import { NewChat } from '../types/NewChat';
 import { NewUsersToChat } from '../types/NewUsersToChat';
+import { Role } from '../types/Role';
 import { store } from '../utils/Store';
 
 export class ChatsController {
@@ -30,6 +31,14 @@ export class ChatsController {
 
     async changeAvatar(data: FormData) {
         await this.api.changeAvatar(data);
+    }
+
+    async getCommon(chatId: number): Promise<Chat[]> {
+        return this.api.getCommon(chatId);
+    }
+
+    async getChatUsers(chatId: number): Promise<Role[]> {
+        return await this.api.getChatUsers(chatId);
     }
 
     setSelectedChatId(chatId: number | null) {

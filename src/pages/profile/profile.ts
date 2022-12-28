@@ -21,7 +21,6 @@ class ProfilePageBase extends Block<ProfilePageProps> {
         this.children.avatarChanger = new AvatarChangerComponent({
             events: {
                 click: () => {
-                    console.log('avatar clicked');
                     this.showPopupChanger = true;
                     this.setProps({ showPopupChanger: this.showPopupChanger });
                 },

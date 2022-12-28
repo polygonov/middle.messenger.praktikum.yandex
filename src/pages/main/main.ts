@@ -1,3 +1,4 @@
+import { AvatarInput } from '../../components/avatar-input';
 import { Button } from '../../components/button';
 import { ChatsComponent } from '../../components/chats';
 import { ChatsHeadComponent } from '../../components/chats-head';
@@ -21,9 +22,12 @@ type MainPageProps = {
 }
 class MainPageBase extends Block<MainPageProps> {
     showChats = true;
+    inputFileElement: HTMLInputElement | undefined;
+    changeAvatarText = 'Выберите аватар вашего чата на компьютере';
     constructor(props: MainPageProps) {
         super(props);
         chatsController.fetchChats();
+        this.addEvents();
     }
 
     protected checkProps() {
@@ -35,7 +39,6 @@ class MainPageBase extends Block<MainPageProps> {
     }
 
     protected initChildren(): void {
-        let inputNewChatNameEl: HTMLInputElement | undefined;
         this.children.chatsHead = new ChatsHeadComponent({});
         this.children.chats = new ChatsComponent({});
         this.children.messagesHead = new MessagesHeadComponent({});
@@ -43,40 +46,66 @@ class MainPageBase extends Block<MainPageProps> {
         this.children.messageAction = new MessageActionsComponent({});
         this.children.messageFooter = new MessageFooterComponent({});
         this.children.inputConnectName = new Input({
-            name: 'passwordCheck',
+            name: 'inputConnectName',
             type: 'text',
-            placeholder: 'Введите логин для связи',
+            placeholder: 'harrypotter',
             pattern: ValidateRules.login,
+        });
+        this.children.inputChatName = new Input({
+            name: 'inputChatName',
+            type: 'text',
+            placeholder: 'Гриффиндор',
+            pattern: ValidateRules.notEmpty,
+        });
+        this.children.inputFile = new AvatarInput({
+            id: 'file-upload',
+            name: 'avatar',
+            type: 'file',
             events: {
                 input: () => {
-                    inputNewChatNameEl = <HTMLInputElement> this.children.inputConnectName.element;
+                    this.inputFileElement = <HTMLInputElement> this.children.inputFile.element;
+                    this.changeAvatarText = 'Изображение выбрано';
+                    this.setProps({ changeAvatarText: this.changeAvatarText });
+                    this.setProps({ inputFileElement: this.inputFileElement });
                 },
             },
         });
         this.children.button = new Button({
-            label: 'Создать',
+            label: 'Создать чат',
             type: 'submit',
-            events: {
-                click: () => {
-                    this.createNewChatWithOneUser(inputNewChatNameEl);
-                },
-            },
         });
     }
 
-    private async createNewChatWithOneUser(inputNewChatNameEl: HTMLInputElement | undefined) {
-        const login = inputNewChatNameEl!.value;
-        if (login.length > 0) {
-            const users = await userController.searchUser(login);
-            const newChatName =
-                this.props.user.first_name + ' и ' + users[0].first_name;
-            await chatsController.createChat({ title: newChatName });
-            const newChat: Chat = this.props.chats[0];
-            await chatsController.addNewUsersToChat({
-                users: [users[0].id],
-                chatId: newChat.id,
-            });
-        }
+    protected addEvents() {
+        this.setProps({
+            events: {
+                submit: async(e: SubmitEvent) => {
+                    e.preventDefault();
+                    const data = [...new FormData(e.target as HTMLFormElement)];
+                    const users = await userController.searchUser(data[1][1].toString());
+                    if (users.length === 0) {
+                        alert('Такой пользователь не найден');
+                        return;
+                    }
+                    await chatsController.createChat({ title: data[0][1].toString() });
+                    const newChat: Chat = this.props.chats[0];
+                    await chatsController.addNewUsersToChat({
+                        users: [this.props.user.id, users[0].id],
+                        chatId: newChat.id,
+                    });
+                    const file: File | undefined = this.inputFileElement?.files![0];
+                    if (!file) {
+                        await chatsController.fetchChats();
+                        return;
+                    }
+                    const formData = new FormData();
+                    formData.append('chatId', newChat.id.toString());
+                    formData.append('avatar', file);
+                    await chatsController.changeAvatar(formData);
+                    await chatsController.fetchChats();
+                },
+            },
+        });
     }
 
     componentDidUpdate(oldProps: unknown, newProps: unknown): boolean {
@@ -85,7 +114,12 @@ class MainPageBase extends Block<MainPageProps> {
     }
 
     protected render(): DocumentFragment {
-        return this.compile(template, { showChats: this.showChats, ...this.props });
+        return this.compile(template, {
+            showChats: this.showChats,
+            ...this.props,
+            changeAvatarText: this.changeAvatarText,
+            inputFileElement: this.inputFileElement,
+        });
     }
 }
 

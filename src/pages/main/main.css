@@ -46,41 +46,99 @@
             align-items: center;
             justify-content: center;
 
-            .create-chat {       
-                display: flex;             
-                align-items: center;
-                justify-content: center;
-                text-align: center;
-                .chat-search {
-                    background: var(--grey);
-                    border-radius: 5px;
-                    margin: 10px;
-                    height: 32px;
+            .form {
+                width: 510px;
+                left: 470px;
+                top: 135px;
+                display: flex;
+                flex-flow: column;
+                justify-content: space-between;   
+        
+                .head {
+                    width: 100%;
                     display: flex;
-                
-                    .inner {
-                        color: var(--light-grey);
-                        width: 250px;
-                        margin: 5px;
-                        background: var(--grey);
-                        border: 0px;
-                        box-sizing: border-box;
-                        outline: none;
-                        display: block;
-                        &::placeholder {
-                            color: var(--light-grey);
-                        }
-                    }
-                }
-                .btn {
-                    background: var(--blue);
-                    border-radius: 5px;
-                    border: none;
-                    width: 100px;
-                    height: 32px;
-                    margin-top: 14px;
-                    margin-bottom: 14px;
+                    flex-flow: column;
                     color: var(--light-grey);
+                    align-items: center;
+                    margin-top: 8px;
+        
+                    .name {
+                        font-size: 20px;
+                        margin-bottom: 40px;
+                    }
+                    
+                    .inputs {
+                        width: 100%;
+                
+                        input[type="file"] {
+                            display: none;
+                        }
+
+                        .file {
+                            cursor: pointer;
+                            color:  var(--blue);
+                            font-size: 14px;
+                            margin: 5px;
+                            outline: none;
+                        }
+
+                        .field {
+                            display: flex;
+                            justify-content: space-between;
+                            border-bottom: 1px solid var(--light-grey);
+                            box-shadow: none;
+                            padding-bottom: 8px;
+                            margin-bottom: 10px;
+
+                            .tip {
+                                font-size: 14px;
+                                width: 56%;
+                            }
+                            
+                            .inner {
+                                outline: none;
+                                display: block;
+                                width: 44%;
+                                border: 0px;
+                                font-size: 14px;
+                                box-sizing: border-box;
+                                background: var(--dark-blue);
+                                color: var(--light-grey);
+                                text-align: right;
+                            }
+
+                            input:not(:focus):not(:placeholder-shown):invalid {
+                                color: var(--error);
+                            }
+                        }
+
+                        margin-bottom: 60px;
+
+                    }
+        
+                }
+        
+                .footer {
+                    
+                    display: flex;
+                    align-items: center;
+                    flex-flow: column;
+                    padding-bottom: 30px;
+        
+                    .btn {
+                        background: var(--blue);
+                        border-radius: 8px;
+                        border: none;
+                        width: 280px;
+                        height: 37px;
+                        margin-bottom: 14px;
+                        color: #e5e5e5;
+                    }
+        
+                    .ask {
+                        font-size: 11px;
+                        color: #4193fb;
+                    }
                 }
             }
         }

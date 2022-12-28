@@ -131,7 +131,10 @@ export class ChangeProfilePageBase extends Block<ChangeProfilePageProps> {
             className: 'btn',
             events: {
                 click: () => {
-                    const file: File = inputFileElement!.files![0];
+                    const file: File | undefined = inputFileElement?.files![0];
+                    if (!file) {
+                        return;
+                    }
                     const formData = new FormData();
                     formData.append('avatar', file);
                     userController.changeAvatar(formData);

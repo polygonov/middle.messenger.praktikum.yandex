@@ -10,21 +10,39 @@
     </div>
     <div class="message-sector">
         {{#if selectedChatId}}
-            {{{ messagesHead }}}
-            <div class="message-divider"></div>
-            {{{ messages }}}
-            {{!-- {{{ messageAction }}} --}}
-            <div class="message-divider"></div>
-            {{{ messageFooter }}}
+        {{{ messagesHead }}}
+        <div class="message-divider"></div>
+        {{{ messages }}}
+        {{!-- {{{ messageAction }}} --}}
+        <div class="message-divider"></div>
+        {{{ messageFooter }}}
         {{else}}
         <div class="not-selected">
-            <div>Выберите чат из списка или укажите логин другого пользователя для создания чата с ним</div>
-            <div class="create-chat">
-                <div class="chat-search">
-                    {{{ inputConnectName }}}
+            <form class="form log">
+                <div class="head">
+                    <div class="inputs">
+                        <div class="field">
+                            <div id="pass" class="tip">
+                                Укажите название вашего чата
+                            </div>
+                            {{{ inputChatName}}}
+                        </div>
+                        <div class="field">
+                            <div class="tip">
+                                Логин пользователя для добавления в чат
+                            </div>
+                            {{{ inputConnectName }}}
+                        </div>
+                         <label class="file" for="file-upload" class="custom-file-upload">
+                            {{{ changeAvatarText }}}
+                        </label>
+                        {{{ inputFile }}}
+                    </div>
                 </div>
-                {{{ button }}}
-            </div>
+                <div class="footer">
+                    {{{ button }}}
+                </div>
+            </form>
         </div>
         {{/if}}
 
