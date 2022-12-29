@@ -5,9 +5,10 @@ type InputProps = {
     name: string;
     type: string;
     pattern: string;
+    placeholder?: string;
     events?: {
         click?: () => void;
-        input?: () => void;
+        input?: (e?: any) => void;
     }
 }
 

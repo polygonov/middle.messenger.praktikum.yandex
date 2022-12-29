@@ -18,7 +18,8 @@
         margin-bottom: 70px;
     }
 
-    .link { 
+    .pointer { 
         font-size: 11px;
+        color: var(--blue);
     }
 }

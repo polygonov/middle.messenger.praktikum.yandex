@@ -1,29 +1,63 @@
 import { Block } from '../../utils/Block';
 import template from './chats.hbs';
-import avatar1 from '../../../static/avatar1.png';
-import avatar2 from '../../../static/avatar2.png';
-import avatar3 from '../../../static/avatar3.png';
-import chatsList from '../../data/chatsList.json';
+import defAvatar from '../../../static/avatar3.png';
+import { withStore } from '../../hocs/withStore';
+import { Chat } from '../../types/Chat';
+import { ChatPreview } from '../chat-preview.ts';
+import { sourceLink } from '../../utils/sourceLink';
+import { chatsController } from '../../controllers/ChatsController';
 
 type ChatsProps = {
+    chats: Chat[];
     events?: {
         click?: () => void;
     }
 }
 
-export class ChatsComponent extends Block<ChatsProps> {
+class ChatsComponentBase extends Block<ChatsProps> {
     constructor(props: ChatsProps) {
         super(props);
     }
 
     protected initChildren(): void {
+        this.children.chats = this.createChatsViews(this.props) as unknown as Block<ChatsProps>;
     }
 
-    componentDidUpdate(oldProps: ChatsProps, newProps: ChatsProps): boolean {
-        return super.componentDidUpdate(oldProps, newProps);
+    componentDidUpdate(_oldProps: ChatsProps, newProps: ChatsProps): boolean {
+        this.children.chats = this.createChatsViews(newProps) as unknown as Block<ChatsProps>;
+        return true;
+    }
+
+    private createChatsViews(props: ChatsProps) {
+        return props.chats.map(data => {
+            const date = new Date(data.last_message?.time);
+            const avatar = data.avatar;
+            const content = data.last_message?.content;
+            let showContent = '';
+            if (content) {
+                showContent = content.length > 50 ? content.substring(0, 50) + '...' : content;
+            }
+            return new ChatPreview({
+                id: data.id,
+                avatar: avatar ? sourceLink + avatar : defAvatar,
+                title: data.title || '',
+                content: showContent,
+                time: data.last_message?.time ? date.getHours() + ':' + date.getMinutes() : '',
+                count: data.unread_count || 0,
+                events: {
+                    click: () => {
+                        chatsController.setSelectedChatId(data.id);
+                    },
+                },
+            });
+        });
     }
 
     protected render(): DocumentFragment {
-        return this.compile(template, { avatar1, avatar2, avatar3, chatsList });
+        const chats = this.props.chats;
+        return this.compile(template, { defAvatar, chats, ...this.props });
     }
 }
+
+const withChats = withStore((state: any) => ({ chats: [...(state.chats || [])] }));
+export const ChatsComponent = withChats(ChatsComponentBase);

@@ -5,6 +5,12 @@
     display: grid;
     grid-template-columns: 67 auto 50;
 
+    &:hover {
+        background: var(--selected-dark);
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
     .avatar {
         border-radius: 50%;
         width: 47px;
@@ -69,5 +75,6 @@
 
 .chat-preview-selected {
     background-color: var(--dark-grey);
+    border-radius: 5px;
 }
 
