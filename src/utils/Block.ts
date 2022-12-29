@@ -10,7 +10,7 @@ export abstract class Block<Props extends {}> {
     };
 
     id = nanoid(6);
-    private _element: HTMLElement | null = null;
+    _element: HTMLElement | null = null;
     private _eventBus: () => EventBus;
     private _eventsLinks: Record<string, () => void>;
     protected props: any;
