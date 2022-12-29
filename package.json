@@ -34,8 +34,10 @@
     "typescript": "4.8"
   },
   "dependencies": {
+    "chai": "4.3.7",
     "express": "4.18.1",
     "express-history-api-fallback": "2.2.1",
+    "mocha": "10.2.0",
     "nanoid": "^4.0.0"
   }
 }
