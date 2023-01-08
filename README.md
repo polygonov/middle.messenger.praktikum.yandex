@@ -1,6 +1,6 @@
 # [Yandex.Practicum Messenger]
 
-Это проект Игоря Полякова, третий спринт модуля "Messanger" для Yandex.Practicum.
+Это проект Полякова Игоря, третий спринт модуля "Messanger" для Yandex.Practicum.
 
 ## Описание.
 
