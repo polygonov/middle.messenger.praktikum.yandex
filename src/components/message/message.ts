@@ -6,7 +6,7 @@ type MessageProps = {
     content: string;
     time: string;
     master: boolean;
-    isReadIcon: string;
+    readenIcon: string;
     events?: {
         click?: () => void;
     }

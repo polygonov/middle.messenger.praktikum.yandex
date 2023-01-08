@@ -32,7 +32,7 @@ class MessagesComponentBase extends Block<MessagesProps> {
                 content: data.content,
                 time: date.getHours() + ':' + date.getMinutes(),
                 master: props.user.id === data.user_id,
-                isReadIcon: data.is_read ? messageStatus : '',
+                readenIcon: data.is_read ? messageStatus : '',
             });
         });
     }

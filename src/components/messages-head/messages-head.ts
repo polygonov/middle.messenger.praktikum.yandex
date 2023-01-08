@@ -42,12 +42,12 @@ export class MessagesHeadComponentBase extends Block<MessagesHeadProps> {
     protected render(): DocumentFragment {
         return this.compile(template,
             {
-                avatar,
                 icnDeleteChat,
                 chatTools,
                 ...this.props,
                 sourceLink,
                 actualChat: this.actualChat,
+                avatarLink: this.actualChat?.avatar ? sourceLink + this.actualChat.avatar : avatar,
             },
         );
     }
