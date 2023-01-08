@@ -1,6 +1,5 @@
 import { Block } from '../../utils/Block';
 import template from './messages.hbs';
-import messagesList from '../../data/messagesList.json';
 import messageStatus from '../../../static/message-status.svg';
 import { withStore } from '../../hocs/withStore';
 import { MessageComponent } from '../message/message';
@@ -44,7 +43,7 @@ class MessagesComponentBase extends Block<MessagesProps> {
     }
 
     protected render(): DocumentFragment {
-        return this.compile(template, { messagesList, messageStatus, ...this.props });
+        return this.compile(template, { messageStatus, ...this.props });
     }
 }
 
