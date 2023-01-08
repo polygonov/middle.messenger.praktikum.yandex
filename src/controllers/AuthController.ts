@@ -38,6 +38,7 @@ export class AuthController {
         try {
             await this.api.logout();
             messagesController.closeAll();
+            store.clear();
             router.go(Routes.Index);
         } catch (e: any) {
             console.error(e.message);

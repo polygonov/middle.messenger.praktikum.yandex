@@ -1,6 +1,5 @@
 import { Block } from '../../utils/Block';
 import template from './messages.hbs';
-import messagesList from '../../data/messagesList.json';
 import messageStatus from '../../../static/message-status.svg';
 import { withStore } from '../../hocs/withStore';
 import { MessageComponent } from '../message/message';
@@ -32,7 +31,7 @@ class MessagesComponentBase extends Block<MessagesProps> {
                 content: data.content,
                 time: date.getHours() + ':' + date.getMinutes(),
                 master: props.user.id === data.user_id,
-                isReadIcon: data.is_read ? messageStatus : '',
+                readenIcon: data.is_read ? messageStatus : '',
             });
         });
     }
@@ -40,12 +39,11 @@ class MessagesComponentBase extends Block<MessagesProps> {
     componentDidUpdate(_oldProps: MessagesProps, newProps: MessagesProps): boolean {
         this.children.messages =
             this.createMessagesViews(newProps) as unknown as Block<MessagesProps>;
-        setTimeout(() => { this._element!.scrollTop = this._element!.offsetHeight; }, 200);
         return true;
     }
 
     protected render(): DocumentFragment {
-        return this.compile(template, { messagesList, messageStatus, ...this.props });
+        return this.compile(template, { messageStatus, ...this.props });
     }
 }
 

@@ -16,5 +16,5 @@ main {
 }
 
 ::-webkit-scrollbar-thumb {
-    box-shadow: inset 0 0 6px #1d2736 ;
+    box-shadow: inset 0 0 6px var(--dark-grey);
 }

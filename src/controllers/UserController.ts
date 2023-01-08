@@ -13,7 +13,6 @@ export class UserController {
 
     async changePassword(data: NewPassword) {
         await this.api.changePassword(data);
-        await authController.logout();
     }
 
     async changeAvatar(data: FormData) {

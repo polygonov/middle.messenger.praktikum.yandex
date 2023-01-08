@@ -1,6 +1,7 @@
 import WSTransport, { WSTransportEvents } from '../utils/WSTransport';
 import { store } from '../utils/Store';
 import { chatsController } from './ChatsController';
+import { wsMessagesLink } from '../utils/wsMessagesLink';
 
 export interface Message {
     is_read: boolean;
@@ -32,7 +33,7 @@ class MessagesController {
         const userId = store.getState().user.id;
 
         const wsTransport =
-            new WSTransport(`wss://ya-praktikum.tech/ws/chats/${userId}/${id}/${token}`);
+            new WSTransport(`${wsMessagesLink}/${userId}/${id}/${token}`);
 
         this.sockets.set(id, wsTransport);
 
