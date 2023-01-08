@@ -17,6 +17,10 @@ export class Store extends EventBus {
     public getState() {
         return this.state;
     }
+
+    public clear() {
+        this.state = {};
+    }
 }
 
 export const store = new Store();

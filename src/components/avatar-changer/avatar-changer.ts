@@ -25,7 +25,7 @@ export class AvatarChangerComponentBase extends Block<AvatarChangerProps> {
     protected render(): DocumentFragment {
         return this.compile(
             template,
-            { memoji, ...this.props, sourceLink },
+            { memoji, ...this.props, sourceLink, avatarLink: sourceLink + this.props.avatar },
         );
     }
 }

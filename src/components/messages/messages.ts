@@ -40,7 +40,6 @@ class MessagesComponentBase extends Block<MessagesProps> {
     componentDidUpdate(_oldProps: MessagesProps, newProps: MessagesProps): boolean {
         this.children.messages =
             this.createMessagesViews(newProps) as unknown as Block<MessagesProps>;
-        setTimeout(() => { this._element!.scrollTop = this._element!.offsetHeight; }, 200);
         return true;
     }
 
