@@ -1,6 +1,8 @@
 import { Block } from '../../utils/Block';
 import template from './avatar-changer.hbs';
 import memoji from '../../../static/memoji.png';
+import { withStore } from '../../hocs/withStore';
+import { sourceLink } from '../../utils/sourceLink';
 
 type AvatarChangerProps = {
     events?: {
@@ -8,7 +10,7 @@ type AvatarChangerProps = {
     }
 }
 
-export class AvatarChangerComponent extends Block<AvatarChangerProps> {
+export class AvatarChangerComponentBase extends Block<AvatarChangerProps> {
     constructor(props: AvatarChangerProps) {
         super(props);
     }
@@ -21,6 +23,12 @@ export class AvatarChangerComponent extends Block<AvatarChangerProps> {
     }
 
     protected render(): DocumentFragment {
-        return this.compile(template, { memoji });
+        return this.compile(
+            template,
+            { memoji, ...this.props, sourceLink, avatarLink: sourceLink + this.props.avatar },
+        );
     }
 }
+
+const withUser = withStore((state: any) => state.user);
+export const AvatarChangerComponent = withUser(AvatarChangerComponentBase);

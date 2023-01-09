@@ -5,6 +5,8 @@ import sendMessage from '../../../static/send-message.svg';
 import { Input } from '../input';
 import { ValidateRules } from '../../utils/validateRules';
 import { MessageSender } from '../message-sender';
+import { messagesController } from '../../controllers/MessagesController';
+import { withStore } from '../../hocs/withStore';
 
 type MessageFooterProps = {
     events?: {
@@ -12,7 +14,7 @@ type MessageFooterProps = {
     }
 }
 
-export class MessageFooterComponent extends Block<MessageFooterProps> {
+export class MessageFooterComponentBase extends Block<MessageFooterProps> {
     private _messageRule = new RegExp(ValidateRules.notEmpty);
 
     constructor(props: MessageFooterProps) {
@@ -30,7 +32,10 @@ export class MessageFooterComponent extends Block<MessageFooterProps> {
                     const result = Object.fromEntries(entries);
                     const checkMessage = this._messageRule.test(data[0][1].toString());
                     if (checkMessage) {
-                        console.log(result);
+                        messagesController.sendMessage(this.props.selectedChatId, result.message);
+                        const inputMessage =
+                            <HTMLInputElement> this.children.inputMessage.element;
+                        inputMessage.value = '';
                     }
                 },
             },
@@ -53,6 +58,11 @@ export class MessageFooterComponent extends Block<MessageFooterProps> {
     }
 
     protected render(): DocumentFragment {
-        return this.compile(template, { importIcon, sendMessage });
+        return this.compile(template, { importIcon, sendMessage, ...this.props });
     }
 }
+
+const withselectedChatId = withStore((state: any) => ({
+    selectedChatId: state.selectedChatId,
+}));
+export const MessageFooterComponent = withselectedChatId(MessageFooterComponentBase);

@@ -9,17 +9,39 @@
         </div>
     </div>
     <div class="message-sector">
-        {{#if showChats}}
-            {{{ messagesHead }}}
-            <div class="message-divider"></div>
-            {{{ chatActions }}}
-            {{{ messages }}}
-            {{{ messageAction }}}
-            <div class="message-divider"></div>
-            {{{ messageFooter }}}
+        {{#if selectedChatId}}
+        {{{ messagesHead }}}
+        <div class="message-divider"></div>
+        {{{ messages }}}
+        <div class="message-divider"></div>
+        {{{ messageFooter }}}
         {{else}}
         <div class="not-selected">
-            <div>Выберите чат, чтобы отправить сообщение</div>
+            <div class="form log">
+                <div class="head">
+                    <div class="inputs">
+                        <div class="field">
+                            <div id="pass" class="tip">
+                                Укажите название вашего чата
+                            </div>
+                            {{{ inputChatName}}}
+                        </div>
+                        <div class="field">
+                            <div class="tip">
+                                Логин пользователя для добавления в чат
+                            </div>
+                            {{{ inputConnectName }}}
+                        </div>
+                         <label class="file" for="file-upload" class="custom-file-upload">
+                            {{{ changeAvatarText }}}
+                        </label>
+                        {{{ inputFile }}}
+                    </div>
+                </div>
+                <div class="footer">
+                    {{{ button }}}
+                </div>
+            </div>
         </div>
         {{/if}}
 

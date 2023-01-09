@@ -8,7 +8,7 @@
 
     .message-hold {
         width: 100%;
-        overflow: auto;
+        overflow-y: auto;
     }
     
     .message-area {

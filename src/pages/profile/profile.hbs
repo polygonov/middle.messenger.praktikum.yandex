@@ -1,53 +1,40 @@
 <div>
-    <a href="main.html">
-        <div class="back-panel">
-            <img src="{{ backPanel }}">
-        </div>
-    </a>
-
+    {{{ linkToMessanger }}}
     <div class="profile-page">
         <div class="form">
             <div class="content">
-                <div class="avatar">
-                    <img src="{{ memoji }}">
+                <div class="avatar" style="background-image: url({{ memoji }});">
+                    {{#if avatar}}
+                    <img class= "image" src="{{sourceLink}}{{ avatar }}">
+                    {{/if}}
                 </div>
-                <div class="name">Игорь</div>
+                <div class="name">{{ first_name }}</div>
 
                 <div class="shows">
                     <div class="field">
                         <div class="tip">Почта</div>
-                        <div class="inner">igor@ya.ru</div>
+                        <div class="inner">{{ email }}</div>
                     </div>
                     <div class="field">
                         <div class="tip">Логин</div>
-                        <div class="inner">harry</div>
+                        <div class="inner">{{ login }}</div>
                     </div>
                     <div class="field">
                         <div class="tip">Имя</div>
-                        <div class="inner">Игорь</div>
+                        <div class="inner">{{ first_name }}</div>
                     </div>
                     <div class="field">
                         <div class="tip">Фамилия</div>
-                        <div class="inner">Поляков</div>
+                        <div class="inner">{{ second_name }}</div>
                     </div>
                     <div class="field">
                         <div class="tip">Телефон</div>
-                        <div class="inner">+79310001122</div>
+                        <div class="inner">{{ phone }}</div>
                     </div>
                 </div>
-                <div class="changer">
-                    <a href="change-profile.html">
-                        <div>Изменить данные</div>
-                    </a>
-                </div>
-                <div class="changer">
-                    <a href="change-password.html">
-                        <div>Изменить пароль</div>
-                    </a>
-                </div>
-                <div class="exit">
-                    <div>Выйти</div>
-                </div>
+                {{{ linkChangeProfile }}}
+                {{{ linkChangePassword }}}
+                {{{ linkExit }}}
             </div>
         </div>
     </div>

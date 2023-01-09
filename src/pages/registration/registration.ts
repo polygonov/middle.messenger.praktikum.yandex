@@ -1,6 +1,10 @@
 import { Button } from '../../components/button';
 import { Input } from '../../components/input';
+import { Link } from '../../components/link';
+import { authController } from '../../controllers/AuthController';
+import { SignupData } from '../../types/SignupData';
 import { Block } from '../../utils/Block';
+import { Routes } from '../../utils/Routes';
 import { ValidateRules } from '../../utils/validateRules';
 import template from './registration.hbs';
 
@@ -26,30 +30,35 @@ export class RegistrationPage extends Block<RegistrationPageProps> {
         this.setProps({
             events: {
                 submit: (e: SubmitEvent) => {
-                    e.preventDefault();
-                    const data = [...new FormData(e.target as HTMLFormElement)];
-                    const entries = new Map(data.slice(0, -1));
-                    const result = Object.fromEntries(entries);
-                    const checkEmail = this._emailRule.test(data[0][1].toString());
-                    const checkLogin = this._loginRule.test(data[1][1].toString());
-                    const checkFirstName = this._nameRule.test(data[2][1].toString());
-                    const checkSecondName = this._nameRule.test(data[3][1].toString());
-                    const checkPhone = this._phoneRule.test(data[4][1].toString());
-                    const checkPassword = this._passwordRule.test(data[5][1].toString());
-                    const checkPasswordAgain = data[5][1].toString() === data[6][1].toString();
-                    if (checkEmail &&
-                        checkLogin &&
-                        checkFirstName &&
-                        checkSecondName &&
-                        checkPhone &&
-                        checkPassword &&
-                        checkPasswordAgain
-                    ) {
-                        console.log(result);
-                    }
+                    this.onSubmit(e);
                 },
             },
         });
+    }
+
+    private onSubmit(e: SubmitEvent) {
+        e.preventDefault();
+        const data = [...new FormData(e.target as HTMLFormElement)];
+        const entries = new Map(data.slice(0, -1));
+        const result = Object.fromEntries(entries);
+        const checkEmail = this._emailRule.test(data[0][1].toString());
+        const checkLogin = this._loginRule.test(data[1][1].toString());
+        const checkFirstName = this._nameRule.test(data[2][1].toString());
+        const checkSecondName = this._nameRule.test(data[3][1].toString());
+        const checkPhone = this._phoneRule.test(data[4][1].toString());
+        const checkPassword = this._passwordRule.test(data[5][1].toString());
+        const checkPasswordAgain = data[5][1].toString() === data[6][1].toString();
+        if (checkEmail &&
+            checkLogin &&
+            checkFirstName &&
+            checkSecondName &&
+            checkPhone &&
+            checkPassword &&
+            checkPasswordAgain
+        ) {
+            console.log(result);
+            authController.signup(result as unknown as SignupData);
+        }
     }
 
     protected initChildren(): void {
@@ -99,6 +108,11 @@ export class RegistrationPage extends Block<RegistrationPageProps> {
         this.children.button = new Button({
             label: 'Зарегистрироваться',
             type: 'submit',
+        });
+        this.children.linkToLogin = new Link({
+            label: 'Войти',
+            to: Routes.Index,
+            className: 'ask',
         });
     }
 

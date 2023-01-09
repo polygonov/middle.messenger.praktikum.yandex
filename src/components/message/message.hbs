@@ -1,0 +1,24 @@
+{{#if master}}
+<div class="message-hold">
+    <div class="right-message">
+        <div>
+            {{content}}
+        </div>
+        <div class="status">
+            <img class="right-message-icon" src="{{{ readenIcon }}}">
+            <time>{{time}}</time>
+        </div>
+    </div>
+</div>
+{{else}}
+<div class="message-hold">
+    <div class="left-message">
+        <div>
+            {{content}}
+        </div>
+        <div class="status">
+            <time>{{time}}</time>
+        </div>
+    </div>
+</div>
+{{/if}}

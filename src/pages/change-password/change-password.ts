@@ -5,6 +5,12 @@ import { Input } from '../../components/input';
 import { ValidateRules } from '../../utils/validateRules';
 import memoji from '../../../static/memoji.png';
 import { Button } from '../../components/button';
+import { Link } from '../../components/link';
+import { Routes } from '../../utils/Routes';
+import { userController } from '../../controllers/UserController';
+import { NewPassword } from '../../types/NewPassword';
+import { sourceLink } from '../../utils/sourceLink';
+import { withStore } from '../../hocs/withStore';
 
 type ChangePasswordPageProps = {
     events?: {
@@ -12,11 +18,11 @@ type ChangePasswordPageProps = {
     }
 }
 
-export class ChangePasswordPage extends Block<ChangePasswordPageProps> {
+class ChangePasswordPageBase extends Block<ChangePasswordPageProps> {
     private _passwordRule = new RegExp(ValidateRules.password);
 
-    constructor() {
-        super();
+    constructor(props: ChangePasswordPageProps) {
+        super(props);
         this.addEvents();
     }
 
@@ -33,6 +39,7 @@ export class ChangePasswordPage extends Block<ChangePasswordPageProps> {
                     const checkPasswordAgain = data[1][1].toString() === data[2][1].toString();
                     if (checkOldPassword && checkPassword && checkPasswordAgain) {
                         console.log(result);
+                        userController.changePassword(result as unknown as NewPassword);
                     }
                 },
             },
@@ -41,12 +48,12 @@ export class ChangePasswordPage extends Block<ChangePasswordPageProps> {
 
     protected initChildren(): void {
         this.children.inputOldPassword = new Input({
-            name: 'old_password',
+            name: 'oldPassword',
             type: 'password',
             pattern: ValidateRules.password,
         });
         this.children.inputPassword = new Input({
-            name: 'password',
+            name: 'newPassword',
             type: 'password',
             pattern: ValidateRules.password,
             events: {
@@ -67,6 +74,16 @@ export class ChangePasswordPage extends Block<ChangePasswordPageProps> {
             label: 'Сохранить',
             type: 'submit',
         });
+        this.children.linkToProfile = new Link({
+            label: '',
+            to: Routes.Settings,
+            className: 'back-panel',
+            externalTemplate: () => {
+                return `<div class="link back-panel">
+                            <img src="${backPanel}">
+                        </div>`;
+            },
+        });
     }
 
     componentDidUpdate(oldProps: unknown, newProps: unknown): boolean {
@@ -74,6 +91,9 @@ export class ChangePasswordPage extends Block<ChangePasswordPageProps> {
     }
 
     protected render(): DocumentFragment {
-        return this.compile(template, { backPanel, memoji });
+        return this.compile(template, { backPanel, memoji, sourceLink, ...this.props });
     }
 }
+
+const withUser = withStore((state: any) => state.user);
+export const ChangePasswordPage = withUser(ChangePasswordPageBase);
