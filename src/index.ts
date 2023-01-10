@@ -1,6 +1,6 @@
 import { authController } from './controllers/AuthController';
 import { chatsController } from './controllers/ChatsController';
-import './index.css';
+import './styles/style.css';
 import { ChangePasswordPage } from './pages/change-password';
 import { ChangeProfilePage } from './pages/change-profile';
 import { LoginPage } from './pages/login';
