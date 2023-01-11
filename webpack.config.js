@@ -35,34 +35,15 @@ module.exports = {
                 loader: 'handlebars-loader',
             },
             {
-                test: /\.(sa|sc|c)ss$/,
-                use: [
-                    {
-                        loader: MiniCssExtractPlugin.loader,
-                        options: {},
-                    },
-                    'css-loader',
-                    'postcss-loader',
-                ],
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader', 'postcss-loader'],
             },
             { test: /\.svg$/, type: 'asset' },
-            {
-                test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
-                type: 'asset/resource',
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            name: '[name].[ext]',
-                            useRelativePath: true,
-                            esModule: false,
-                        },
-                    },
-                ],
-            },
+            { test: /\.png$/, type: 'asset' },
         ],
     },
     plugins: [
+        require('autoprefixer'),
         new HtmlWebpackPlugin({
             template: './src/index.html',
         }),

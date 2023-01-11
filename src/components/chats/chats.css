@@ -3,7 +3,7 @@
     width: 100%;
     height: 70px;
     display: grid;
-    grid-template-columns: 67 auto 50;
+    grid-template-columns: 67px auto 50px;
 
     &:hover {
         background: var(--selected-dark);
