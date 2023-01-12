@@ -25,7 +25,11 @@ class MessagesComponentBase extends Block<MessagesProps> {
     }
 
     private createMessagesViews(props: MessagesProps) {
-        return props.messages.map(data => {
+        const messages = props.messages.filter(value => {
+            const date = new Date(value.time);
+            return !isNaN(date.getMinutes());
+        });
+        return messages.map(data => {
             const date = new Date(data.time);
             return new MessageComponent({
                 content: data.content,
