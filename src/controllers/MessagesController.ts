@@ -85,7 +85,6 @@ class MessagesController {
         messagesToAdd = [...currentMessages, ...messagesToAdd];
 
         store.set(`messages.${id}`, messagesToAdd);
-        chatsController.fetchChats();
     }
 
     private onClose(id: number) {
