@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "parcel ./src/index.html --no-cache",
+    "dev": "npx webpack serve",
     "build": "webpack",
     "start": "npm run build && node ./server.ts",
-    "eslint": "eslint . ",
+    "lint": "eslint **/*.ts && stylelint **/*.css",
     "stylelint": "npx stylelint **/*.css ",
     "test": "mocha --require ts-node/register --require ./mochaSetup.js './src/**/*.test.ts'"
   },
@@ -15,11 +15,14 @@
       "pre-commit": "npm-run-all test lint:all"
     }
   },
+  "engines": {
+    "node": ">=12"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@anikin/parcel-transformer-handlebars": "1.0.9",
+    "@anikin/parcel-transformer-handlebars": "^1.0.2",
     "@anikin/parcel-transformer-handlebars-precompile": "1.0.1",
     "@types/sinon": "10.0.13",
     "@typescript-eslint/eslint-plugin": "5.42.1",
@@ -44,7 +47,8 @@
     "tslib": "2.4.1",
     "typescript": "4.8",
     "webpack": "5.75.0",
-    "webpack-cli": "5.0.1"
+    "webpack-cli": "5.0.1",
+    "webpack-dev-server": "4.11.1"
   },
   "dependencies": {
     "@types/chai": "4.3.4",
