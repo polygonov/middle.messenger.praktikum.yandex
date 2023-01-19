@@ -3,11 +3,20 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "parcel ./src/index.html --no-cache",
-    "build": "parcel build ./src/index.html",
+    "dev": "npx webpack serve",
+    "build": "webpack",
     "start": "npm run build && node ./server.ts",
-    "eslint": "eslint . ",
-    "stylelint": "npx stylelint **/*.css "
+    "lint": "eslint **/*.ts && stylelint **/*.css",
+    "stylelint": "npx stylelint **/*.css ",
+    "test": "mocha --require ts-node/register --require ./mochaSetup.js './src/**/*.test.ts'"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm-run-all test lint:all"
+    }
+  },
+  "engines": {
+    "node": ">=12"
   },
   "keywords": [],
   "author": "",
@@ -15,29 +24,47 @@
   "devDependencies": {
     "@anikin/parcel-transformer-handlebars": "1.0.9",
     "@anikin/parcel-transformer-handlebars-precompile": "1.0.1",
+    "@types/sinon": "10.0.13",
     "@typescript-eslint/eslint-plugin": "5.42.1",
     "@typescript-eslint/parser": "5.42.1",
+    "css-loader": "6.7.3",
     "eslint": "8.27.0",
     "eslint-config-standard-with-typescript": "23.0.0",
     "eslint-plugin-import": "2.26.0",
     "eslint-plugin-n": "15.5.1",
     "eslint-plugin-promise": "6.1.1",
+    "file-loader": "6.2.0",
     "handlebars": "4.7.7",
+    "husky": "8.0.3",
     "parcel": "2.7.0",
     "postcss": "8.4.16",
     "postcss-import": "15.0.0",
     "postcss-modules": "4.3.1",
     "postcss-nested": "5.0.6",
     "stylelint": "14.15.0",
+    "ts-loader": "9.4.2",
     "ts-node": "10.9.1",
     "tslib": "2.4.1",
-    "typescript": "4.8"
+    "typescript": "4.8",
+    "webpack": "5.75.0",
+    "webpack-cli": "5.0.1",
+    "webpack-dev-server": "4.11.1"
   },
   "dependencies": {
+    "@types/chai": "4.3.4",
+    "@types/mocha": "10.0.1",
+    "autoprefixer": "10.4.13",
     "chai": "4.3.7",
     "express": "4.18.1",
     "express-history-api-fallback": "2.2.1",
+    "handlebars-loader": "1.7.3",
+    "html-webpack-plugin": "5.5.0",
+    "jsdom": "21.0.0",
+    "mini-css-extract-plugin": "2.7.2",
     "mocha": "10.2.0",
-    "nanoid": "^4.0.0"
+    "nanoid": "3.3.4",
+    "postcss-loader": "7.0.2",
+    "sinon": "15.0.1",
+    "style-loader": "3.3.1"
   }
 }
